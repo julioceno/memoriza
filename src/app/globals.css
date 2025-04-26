@@ -3,13 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-raleway: 'Raleway', sans-serif;
+
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +20,15 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(
+    to bottom,
+    #ff0b55 13%, 
+    #ff477f 56%, 
+    #ff6392 77%,
+    #ff7fa6 100% 
+  );
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-raleway);
+  height: 100vh;
 }
+
