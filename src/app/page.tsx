@@ -2,8 +2,12 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useToast } from "@/context/toast/toast";
+import { ToastEnum } from "@/constants";
 
 export default function Home() {
+  const { show } = useToast();
+
   return (
     <motion.div
       className="flex h-10/12 items-center justify-center flex-col gap-7 md:px-4 max-w-5xl w-full mx-auto"
@@ -24,6 +28,10 @@ export default function Home() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ y: -10 }}
+        onClick={() => show({
+          message: "Mensagem de Info Mensagem de Info Mensagem de Info",
+          type: ToastEnum.INFO
+        })}
         transition={{ type: "spring", stiffness: 300 }}
       >
         <ArrowRight className="absolute left-4 w-3 sm:w-5 h-3 sm:h-5" strokeWidth={3} />
