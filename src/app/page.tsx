@@ -6,13 +6,13 @@ import { motion } from "framer-motion";
 export default function Home() {
   return (
     <motion.div
-      className="flex h-10/12 items-center justify-center flex-col gap-7"
-      initial={{ opacity: 0, y: 50 }} 
+      className="flex h-10/12 items-center justify-center flex-col gap-7 px-4 max-w-5xl w-full mx-auto"
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <motion.h3
-        className="text-4xl w-5/12 font-bold text-center text-white"
+        className="text-4xl w-full max-w-2xl font-bold text-center text-white"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
