@@ -13,15 +13,20 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     message,
     type = ToastEnum.INFO,
     duration = 3000,
+    maxWidth = 300,
   }: IShowToast) => {
-    setToast({ message, type, duration: duration || 3000 });
+    setToast({ message, type, maxWidth, duration });
     setTimeout(() => setToast(null), duration);
+  };
+
+  const hide = () => {
+    setToast(null);
   };
 
   return (
     <ToastContext.Provider value={{ show }}>
       {children}
-      {toast && <Toast message={toast.message} type={toast.type} duration={toast.duration} />}
+      {toast && <Toast message={toast.message} type={toast.type} onClose={hide} duration={toast.duration} />}
     </ToastContext.Provider>
   );
 };

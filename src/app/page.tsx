@@ -3,11 +3,8 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/context/toast/toast";
-import { ToastEnum } from "@/constants";
 
 export default function Home() {
-  const { show } = useToast();
-
   return (
     <motion.div
       className="flex h-10/12 items-center justify-center flex-col gap-7 md:px-4 max-w-5xl w-full mx-auto"
@@ -24,14 +21,10 @@ export default function Home() {
         Bem-vindo ao Memoriza. Estude rápido. Lembre sempre!
       </motion.h3>
       <motion.button
-        className="relative flex items-center justify-center w-4/5 sm:w-full max-w-xs px-6 py-3 bg-white hover:bg-gray-100 text-gray-700 font-medium rounded-2xl shadow-md hover:shadow-lg cursor-pointer"
-        initial={{ opacity: 0, y: 50 }}
+        className="relative flex items-center justify-center w-3/5 sm:w-full max-w-xs px-6 py-3 bg-white hover:bg-gray-100 text-gray-700 font-medium rounded-2xl shadow-md hover:shadow-lg cursor-pointer"
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ y: -10 }}
-        onClick={() => show({
-          message: "Mensagem de Info Mensagem de Info Mensagem de Info",
-          type: ToastEnum.INFO
-        })}
         transition={{ type: "spring", stiffness: 300 }}
       >
         <ArrowRight className="absolute left-4 w-3 sm:w-5 h-3 sm:h-5" strokeWidth={3} />
