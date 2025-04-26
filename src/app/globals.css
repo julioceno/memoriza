@@ -20,15 +20,16 @@
 }
 
 body {
+  color: var(--foreground);
+  font-family: var(--font-raleway);
+}
+
+.home-gradient {
   background: linear-gradient(
     to bottom,
     #ff0b55 13%, 
     #ff477f 56%, 
-    #ff6392 77%,
-    #ff7fa6 100% 
+    #ff6392 77%, 
+    #ff7fa6 100%
   );
-  color: var(--foreground);
-  font-family: var(--font-raleway);
-  height: 100vh;
 }
-
