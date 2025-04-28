@@ -2,8 +2,15 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation"; 
 
 export default function LandingPage() {
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    router.push('/home'); 
+  };
+
   return (
     <div
       className="home-gradient flex flex-col items-center justify-center h-screen"
@@ -28,6 +35,7 @@ export default function LandingPage() {
           animate={{ opacity: 1, y: 0 }}
           whileHover={{ y: -10 }}
           transition={{ type: "spring", stiffness: 300 }}
+          onClick={handleButtonClick}
         >
           <ArrowRight className="absolute left-4 w-3 sm:w-5 h-3 sm:h-5" strokeWidth={3} />
           <span className="mx-auto font-bold text-xs sm:text-sm">Vamos começar</span>
