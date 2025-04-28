@@ -1,3 +1,5 @@
+import { StatusBadgeEnum } from "./typesStyles";
+
 interface IStatusBadgeProps {
-  children?: React.ReactNode;
+  type: StatusBadgeEnum;
 }

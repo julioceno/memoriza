@@ -1,4 +1,5 @@
 import DeckCard from "@/components/DeckCard";
+import { StatusBadgeEnum } from "@/components/DeckCard/components/StatusBadge/typesStyles";
 import SectionTitle from "@/components/SectionTitle";
 
 export default function Home() {
@@ -11,47 +12,47 @@ export default function Home() {
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
-              statusMessage="Você está bem!" 
+              statusBadgeType={StatusBadgeEnum.SUCCESS}
             />
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
-              statusMessage="Você está bem!" 
+              statusBadgeType={StatusBadgeEnum.ERROR}
             />
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
-              statusMessage="Você está bem!" 
+              statusBadgeType={StatusBadgeEnum.SUCCESS}
             />
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
-              statusMessage="Você está bem!" 
+              statusBadgeType={StatusBadgeEnum.WARNING}
             />
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
-              statusMessage="Você está bem!" 
+              statusBadgeType={StatusBadgeEnum.SUCCESS}
             />
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-                     <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
+              statusBadgeType={StatusBadgeEnum.SUCCESS}
             />
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
-              statusMessage="Você está bem!" 
+              statusBadgeType={StatusBadgeEnum.SUCCESS}
             />
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
-              statusMessage="Você está bem!" 
+              statusBadgeType={StatusBadgeEnum.SUCCESS}
+            />
+            <DeckCard 
+              title="Entrevista Java" 
+              cardCount={10} 
+              statusBadgeType={StatusBadgeEnum.SUCCESS}
             />
         </div>
       </main>

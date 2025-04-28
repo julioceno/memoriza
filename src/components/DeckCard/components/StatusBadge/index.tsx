@@ -1,11 +1,14 @@
 import React from "react";
-import { ThumbsUp } from "lucide-react";
+import { typeStyles } from "./typesStyles";
+import { IStatusBadgeProps } from "./types";
 
-const StatusBadge: React.FC<IStatusBadgeProps> = ({ children }) => {
+const StatusBadge: React.FC<IStatusBadgeProps> = ({ type }) => {
+  const { style, icon, text } = typeStyles[type];
+
   return (
-    <div className="flex items-center gap-2 bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">
-      <ThumbsUp className="w-4 h-4" />
-      {children}
+    <div className={`flex items-center gap-2 ${style} px-3 py-1 rounded-full text-sm font-medium`}>
+      {React.cloneElement(icon, { className: 'flex-shrink-0 w-4 h-4' })}
+      {text}
     </div>
   );
 };

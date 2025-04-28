@@ -2,14 +2,15 @@ import React from "react";
 import { Briefcase, NotebookText } from "lucide-react";
 import Actions from "./components/Actions";
 import StatusBadge from "./components/StatusBadge";
+import { StatusBadgeEnum } from "./components/StatusBadge/typesStyles";
 
 interface IDeckCardProps {
   title: string;
   cardCount: number;
-  statusMessage: string;
+  statusBadgeType: StatusBadgeEnum;
 }
 
-const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusMessage }) => {
+const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusBadgeType }) => {
   return (
     <div className="flex flex-col p-4 bg-white w-sm rounded-lg shadow-md hover:shadow-lg transition">
       <div className="flex items-start justify-between gap-4 w-full">
@@ -17,7 +18,7 @@ const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusMessage })
           <Briefcase className="text-principal w-6 h-6" />
         </div>
         <div className="flex items-center gap-4">
-          <StatusBadge>{statusMessage}</StatusBadge>
+          <StatusBadge type={statusBadgeType} />
           <Actions />
         </div>
       </div>
