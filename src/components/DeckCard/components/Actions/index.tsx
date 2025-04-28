@@ -1,4 +1,4 @@
-import { Edit, GripVertical, MoreHorizontal, Trash2 } from 'lucide-react';
+import { Edit, GripVertical, Trash2 } from 'lucide-react';
 import React from 'react';
 
 const Actions: React.FC = () => {

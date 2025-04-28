@@ -3,13 +3,11 @@ import SectionTitle from "@/components/SectionTitle";
 
 export default function Home() {
   return (
-    <div>
       <main className="mt-20 md:mt-40">
         <SectionTitle>
           Aqui estao seus decks, vamos práticar!
         </SectionTitle>
-        <div className="flex">
-          <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 justify-items-center">
+        <div className="flex flex-wrap gap-4 mt-10 w-full max-w-7xl justify-center mx-auto">
             <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
@@ -40,7 +38,7 @@ export default function Home() {
               cardCount={10} 
               statusMessage="Você está bem!" 
             />
-            <DeckCard 
+                     <DeckCard 
               title="Entrevista Java" 
               cardCount={10} 
               statusMessage="Você está bem!" 
@@ -55,54 +53,7 @@ export default function Home() {
               cardCount={10} 
               statusMessage="Você está bem!" 
             />
-             <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-            <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-            <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-            <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-            <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-            <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-            <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-            <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-            <DeckCard 
-              title="Entrevista Java" 
-              cardCount={10} 
-              statusMessage="Você está bem!" 
-            />
-          </div>
         </div>
       </main>
-    </div>
   );
 }
