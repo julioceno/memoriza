@@ -5,8 +5,8 @@ interface SectionTitleProps {
 const SectionTitle: React.FC<SectionTitleProps> = ({ children }) => {
   return (
     <div className="text-center">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-700">{children}</h2>
-      <div className="mt-1 sm:mt-1.5 w-12 sm:w-24 h-1 bg-gray-700 mx-auto rounded"></div>
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-700 leading-tight">{children}</h2>
+      <div className="mt-1 md:mt-1.5 w-12 md:w-24 h-1 bg-gray-700 mx-auto rounded"></div>
     </div>
   );
 };
