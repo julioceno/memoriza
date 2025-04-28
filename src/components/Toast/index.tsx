@@ -1,18 +1,12 @@
-'use client";'
+'use client';
 import React from 'react';
 import { typeStyles } from './typesStyles';
 import { ToastEnum } from '@/constants';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
+import { IToastProps } from './types';
 
-type ToastProps = {
-  message: string;
-  type?: ToastEnum;
-  duration?: number;
-  onClose?: () => void;
-};
-
-const Toast: React.FC<ToastProps> = ({ 
+const Toast: React.FC<IToastProps> = ({ 
   message, 
   type = ToastEnum.INFO,
   onClose
@@ -31,10 +25,10 @@ const Toast: React.FC<ToastProps> = ({
           {React.cloneElement(icon, { className: 'flex-shrink-0 w-5 h-5' })}
           <span className="text-sm font-medium">{message}</span>
           <button
-          onClick={onClose}
-          className="flex-shrink-0 p-1 rounded cursor-pointer transition"
-          aria-label="Fechar toast"
-        >
+            onClick={onClose}
+            className="flex-shrink-0 p-1 rounded cursor-pointer transition"
+            aria-label="Fechar toast"
+          >
           <X className="w-4 h-4 text-gray-700" strokeWidth={3}/>
         </button>
         </motion.div>
