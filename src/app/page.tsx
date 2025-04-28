@@ -3,7 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <div
       className="home-gradient flex flex-col items-center justify-center h-screen"
