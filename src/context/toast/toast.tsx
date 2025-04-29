@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import Toast from '@/components/Toast';
 import { ToastEnum } from '@/constants';
-import { AnimatePresence } from 'framer-motion';
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 

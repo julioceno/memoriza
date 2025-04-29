@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Edit, GripVertical, Trash2 } from "lucide-react";
 import DeleteDialog from "@/components/DeleteDialog";
-import { AnimatePresence } from "framer-motion";
 
 const Actions: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
