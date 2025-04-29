@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "../Button";
+import Input from "../Input";
 
 interface DeleteDialogProps {
   onClose: () => void;
@@ -8,6 +9,15 @@ interface DeleteDialogProps {
 }
 
 const DeleteDialog: React.FC<DeleteDialogProps> = ({ onClose, onConfirm }) => {
+  const [value, setValue] = useState("");
+
+  const getStatus = () => {
+    if (value.length > 0) return "filled";
+    if (value === "") return "empty";
+    return "filling";
+  };
+
+
   return (
     <motion.div
       className="fixed inset-0 flex items-center justify-center bg-black/20 z-50 px-3"
@@ -23,14 +33,21 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({ onClose, onConfirm }) => {
         exit={{ scale: 0.8, opacity: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        <h2 className="text-md sm:text-xl font-bold text-gray-800 mb-4">
+        <h2 className="w-full text-md sm:text-xl font-bold text-gray-800 mb-4">
           Tem certeza que deseja deletar o Deck?
         </h2>
-        <p className="text-sm sm:text-md text-gray-900 mb-4">
+        <p className="w-full text-sm sm:text-md text-gray-900">
           Você deverá preencher o campo abaixo com a palavra{" "}
-          <span className="font-bold text-red-500">Confirmar</span>, para liberar o botão de confirmação.
+          <span className="font-bold text-red-500">confirmar</span>, para liberar o botão de confirmação.
         </p>
-
+        <div className="w-10/12 sm:w-full mt-2 mb-4">
+          <Input
+            value={value}
+            placeholder="Preenchido"
+            status={getStatus()}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </div>
         <div className="w-30 sm:w-4/12">
           <motion.div
             whileHover={{ scale: 1.05 }}
