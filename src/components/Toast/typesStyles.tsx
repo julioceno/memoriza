@@ -1,11 +1,11 @@
 import { ToastEnum } from '@/constants';
-import { CheckCircle, XCircle, Info, AlertTriangle } from 'lucide-react';
+import { XCircle, Info, AlertTriangle, CircleCheck } from 'lucide-react';
 
 export const typeStyles = {
     [ToastEnum.SUCCESS]: {
       bg: 'bg-green-100',
       text: 'text-green-800',
-      icon: <CheckCircle className="text-green-600" />,
+      icon: <CircleCheck className="text-green-600" />,
     },
     [ToastEnum.ERROR]: {
       bg: 'bg-red-100',

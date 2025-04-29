@@ -22,8 +22,8 @@ const Toast: React.FC<IToastProps> = ({
           transition={{ type: 'spring', stiffness: 300, damping: 30 }} 
           className={`fixed bottom-5 right-5 flex items-center gap-3 px-4 py-3 max-w-[300px] rounded-lg shadow-lg ${bg} ${text}`}
         >
-          {React.cloneElement(icon, { className: 'flex-shrink-0 w-5 h-5' })}
-          <span className="text-sm font-medium">{message}</span>
+          {React.cloneElement(icon, { className: 'flex-shrink-0 w-6 h-6', strokeWidth: 2.8 })}
+          <span className="text-sm md:text-md font-semibold">{message}</span>
           <button
             onClick={onClose}
             className="flex-shrink-0 p-1 rounded cursor-pointer transition"

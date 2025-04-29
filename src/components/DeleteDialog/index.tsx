@@ -2,25 +2,21 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "../Button";
 import Input from "../Input";
+import { useToast } from "@/context/toast/toast";
+import { useDeleteDialog } from "./hooks";
 
 const DeleteDialog: React.FC<IDeleteDialogProps> = ({ 
   onClose, 
+  onConfirm,
   onOpen
 }) => {
-  const [value, setValue] = useState("");
-
-  const getStatus = () => {
-    if (value.length > 0) return "filled";
-    if (value === "") return "empty";
-    return "filling";
-  };
-
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      setValue("")
-      onClose();
-    }
-  };
+  const {
+    handleBackdropClick,
+    handleDelete,
+    getStatus,
+    value,
+    setValue
+  } = useDeleteDialog({ onClose, onConfirm });
 
   return (
     <AnimatePresence>
@@ -62,6 +58,7 @@ const DeleteDialog: React.FC<IDeleteDialogProps> = ({
                   variant="default" 
                   size="small"
                   disabled={value.toLocaleLowerCase() === "confirmar" ? false : true}
+                  onClick={handleDelete}
                 >
                   Deletar
                 </Button>
