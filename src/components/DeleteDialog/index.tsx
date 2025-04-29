@@ -63,7 +63,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
               />
             </div>
             <div className="w-30 sm:w-4/12">
-                <Button full variant="rounded" size="small">
+                <Button full shape="rounded" variant="default" size="small">
                   Deletar
                 </Button>
             </div>

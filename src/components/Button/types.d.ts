@@ -5,8 +5,9 @@ import { icons } from 'lucide-react';
 export interface IButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'rounded' | 'square';
+  shape?: 'rounded' | 'square';
   size?: 'small' | 'medium' | 'large';
+  variant?: 'default' | 'outlined';
   iconName?: keyof typeof icons;
   full?: boolean;
 };
