@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "../Button";
 import Input from "../Input";
-import { useToast } from "@/context/toast/toast";
 import { useDeleteDialog } from "./hooks";
 
 const DeleteDialog: React.FC<IDeleteDialogProps> = ({ 

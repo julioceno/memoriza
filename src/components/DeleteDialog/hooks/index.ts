@@ -6,7 +6,7 @@ interface IUseDeleteDialog {
     onClose: () => void;
 }
 
-export const useDeleteDialog = ({ onClose, onConfirm }: IUseDeleteDialog) => {
+export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
     const toast = useToast()
     const [value, setValue] = useState("");
 
