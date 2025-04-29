@@ -8,6 +8,7 @@ export interface IButtonProps {
   variant?: 'rounded' | 'square';
   size?: 'small' | 'medium' | 'large';
   iconName?: keyof typeof icons;
+  full?: boolean;
 };
 
 type LucideIcon = ForwardRefExoticComponent<Icons.LucideProps & RefAttributes<SVGSVGElement>>;
