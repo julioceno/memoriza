@@ -13,11 +13,11 @@ interface IDeckCardProps {
 const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusBadgeType }) => {
   return (
     <div className="flex flex-col p-4 bg-white w-sm rounded-lg shadow-md hover:shadow-lg transition">
-      <div className="flex items-start justify-between gap-4 w-full">
+      <div className="flex items-start justify-between gap-1 sm:gap-4 w-full">
         <div className="flex items-center justify-center w-12 h-12 bg-gray-50 rounded-2xl">
           <Briefcase className="text-principal w-6 h-6" />
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <StatusBadge type={statusBadgeType} />
           <Actions />
         </div>
