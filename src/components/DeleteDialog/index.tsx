@@ -3,15 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import Button from "../Button";
 import Input from "../Input";
 
-interface DeleteDialogProps {
-  onOpen: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-}
-
-const DeleteDialog: React.FC<DeleteDialogProps> = ({ 
+const DeleteDialog: React.FC<IDeleteDialogProps> = ({ 
   onClose, 
-  onConfirm,
   onOpen
 }) => {
   const [value, setValue] = useState("");
@@ -24,10 +17,10 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
+      setValue("")
       onClose();
     }
   };
-
 
   return (
     <AnimatePresence>
@@ -63,7 +56,13 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
               />
             </div>
             <div className="w-30 sm:w-4/12">
-                <Button full shape="rounded" variant="default" size="small">
+                <Button 
+                  full 
+                  shape="rounded" 
+                  variant="default" 
+                  size="small"
+                  disabled={value.toLocaleLowerCase() === "confirmar" ? false : true}
+                >
                   Deletar
                 </Button>
             </div>

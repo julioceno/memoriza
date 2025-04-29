@@ -10,6 +10,7 @@ const Button: React.FC<IButtonProps> = ({
   iconName,
   children,
   full = false,
+  disabled = false
 }) => {
   const shapeStyles = {
     square: 'rounded-xl',
@@ -17,9 +18,17 @@ const Button: React.FC<IButtonProps> = ({
   };
 
   const variantStyles = {
-    default: 'bg-principal text-white hover:bg-red-700',
-    outlined: 'border border-gray-800 text-gray-800 bg-transparent hover:bg-gray-900',
+    default: disabled
+      ? 'bg-zinc-600 text-white cursor-not-allowed'
+      : 'bg-principal text-white hover:bg-red-700',
+    outlined: disabled
+      ? 'border border-gray-400 text-gray-400 cursor-not-allowed'
+      : 'border border-gray-800 text-gray-800 bg-transparent hover:bg-gray-900',
   };
+
+
+  const cursorType = disabled ? 'cursor-not-allowed' : 'cursor-pointer';
+  const width = full ? 'w-full' : '';
 
   const sizeStyles = {
     small: 'px-2 md:px-3 py-1 md:py-1.5 text-xs sm:text-sm',
@@ -31,8 +40,9 @@ const Button: React.FC<IButtonProps> = ({
 
   return (
     <button
-      className={`flex items-center font-medium transition cursor-pointer justify-center ${shapeStyles[shape]} ${variantStyles[variant]} ${sizeStyles[size]} ${full ? 'w-full' : ''}`}
-      onClick={onClick}
+      className={`flex items-center font-medium transition justify-center ${shapeStyles[shape]} ${variantStyles[variant]} ${sizeStyles[size]} ${cursorType} ${width}`}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
     >
       {Icon && <Icon className="w-5 h-5 mr-2" />}
       {children}

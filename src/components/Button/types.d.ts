@@ -10,6 +10,7 @@ export interface IButtonProps {
   variant?: 'default' | 'outlined';
   iconName?: keyof typeof icons;
   full?: boolean;
+  disabled?: boolean;
 };
 
 type LucideIcon = ForwardRefExoticComponent<Icons.LucideProps & RefAttributes<SVGSVGElement>>;
