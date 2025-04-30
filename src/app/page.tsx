@@ -8,7 +8,7 @@ export default function LandingPage() {
   const router = useRouter();
 
   const handleButtonClick = () => {
-    router.push('/home'); 
+    router.push('/decks'); 
   };
 
   return (

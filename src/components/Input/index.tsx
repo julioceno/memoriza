@@ -17,7 +17,7 @@ const Input: React.FC<IInputProps> = ({
   const sizeStyles = {
     small: "rounded-xl px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm",
     medium: "rounded-2xl px-4 py-2 text-sm",
-    large: "rounded-2xl px-4 py-2 text-lg",
+    large: "rounded-xl md:rounded-2xl px-2 md:px-4 py-1.5 md:py-2 text-md md:text-lg",
   };
 
   const width = full ? 'w-full' : '';

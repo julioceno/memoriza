@@ -3,7 +3,7 @@ import DeckCard from "@/components/DeckCard";
 import { StatusBadgeEnum } from "@/components/DeckCard/components/StatusBadge/typesStyles";
 import SectionTitle from "@/components/SectionTitle";
 
-export default function Home() {
+export default function Deck() {
   const decks = [
     { title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
     { title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.ERROR },

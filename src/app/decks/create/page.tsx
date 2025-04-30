@@ -10,7 +10,7 @@ const CreatePage: React.FC = () => {
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <div className="mt-32 md:mt-40 flex flex-col gap-6 w-full max-w-md md:max-w-xl">
+            <div className="mt-32 md:mt-40 flex flex-col gap-4 md:gap-6 w-full max-w-md md:max-w-xl">
                 <SectionTitle>
                     Escolha um nome para seu deck
                 </SectionTitle>
@@ -22,7 +22,7 @@ const CreatePage: React.FC = () => {
                     status={deckName ? "filled" : "empty"}
                     onChange={(e) => setDeckName(e.target.value)}
                 />
-                <Button full>
+                <Button full disabled={!deckName}>
                     Próximo
                 </Button>
             </div>
