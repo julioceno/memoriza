@@ -22,8 +22,8 @@ const Button: React.FC<IButtonProps> = ({
       ? 'bg-zinc-600 text-white cursor-not-allowed'
       : 'bg-principal text-white hover:bg-red-700',
     outlined: disabled
-      ? 'border border-gray-400 text-gray-400 cursor-not-allowed'
-      : 'border border-gray-800 text-gray-800 bg-transparent hover:bg-gray-900',
+      ? 'border md:border-2 border-gray-400 text-gray-400 cursor-not-allowed'
+      : 'border md:border-2 border-gray-800 text-gray-800 bg-transparent hover:bg-gray-900',
   };
 
   const cursorType = disabled ? 'cursor-not-allowed' : 'cursor-pointer';
