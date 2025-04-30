@@ -17,7 +17,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="mt-20 md:mt-40">
+    <div className="mt-20 md:mt-40">
       <SectionTitle>
         Aqui estao seus decks, vamos práticar!
       </SectionTitle>
@@ -31,6 +31,6 @@ export default function Home() {
           />
         ))}
       </div>
-    </main>
+    </div>
   );
 }

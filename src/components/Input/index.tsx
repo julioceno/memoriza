@@ -5,7 +5,8 @@ const Input: React.FC<IInputProps> = ({
     placeholder, 
     status, 
     size = "small", 
-    onChange 
+    onChange, 
+    full = false 
 }) => {
   const statusStyles = {
     filled: "border-black text-black",
@@ -19,9 +20,11 @@ const Input: React.FC<IInputProps> = ({
     large: "rounded-2xl px-4 py-2 text-lg",
   };
 
+  const width = full ? 'w-full' : '';
+
   return (
     <div
-      className={`flex items-center  gap-2 border ${statusStyles[status]} ${sizeStyles[size]} transition`}
+      className={`flex items-center gap-2 border ${statusStyles[status]} ${sizeStyles[size]} transition ${width}`}
     >
       <input
         type="text"

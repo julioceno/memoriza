@@ -26,7 +26,6 @@ const Button: React.FC<IButtonProps> = ({
       : 'border border-gray-800 text-gray-800 bg-transparent hover:bg-gray-900',
   };
 
-
   const cursorType = disabled ? 'cursor-not-allowed' : 'cursor-pointer';
   const width = full ? 'w-full' : '';
 
