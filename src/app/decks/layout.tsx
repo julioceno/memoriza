@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import { useRouter } from "next/router";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -54,7 +54,7 @@ const DeleteDialog: React.FC<IDeleteDialogProps> = ({
                 <Button 
                   full 
                   shape="rounded" 
-                  variant="default" 
+                  type="default" 
                   size="small"
                   disabled={value.toLocaleLowerCase() === "confirmar" ? false : true}
                   onClick={handleDelete}

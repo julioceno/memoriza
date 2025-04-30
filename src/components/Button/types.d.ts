@@ -7,7 +7,7 @@ export interface IButtonProps {
   onClick?: () => void;
   shape?: 'rounded' | 'square';
   size?: 'small' | 'medium' | 'large';
-  variant?: 'default' | 'outlined';
+  type?: 'default' | 'outlined';
   iconName?: keyof typeof icons;
   full?: boolean;
   disabled?: boolean;

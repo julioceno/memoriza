@@ -5,7 +5,7 @@ import { icons, LucideIcon } from 'lucide-react';
 const Button: React.FC<IButtonProps> = ({
   onClick,
   shape = 'rounded',
-  variant = 'default',
+  type = 'default',
   size = 'medium',
   iconName,
   children,
@@ -17,7 +17,7 @@ const Button: React.FC<IButtonProps> = ({
     rounded: 'rounded-full',
   };
 
-  const variantStyles = {
+  const types = {
     default: disabled
       ? 'bg-zinc-600 text-white cursor-not-allowed'
       : 'bg-principal text-white hover:bg-red-700',
@@ -39,7 +39,7 @@ const Button: React.FC<IButtonProps> = ({
 
   return (
     <button
-      className={`flex items-center font-medium transition justify-center ${shapeStyles[shape]} ${variantStyles[variant]} ${sizeStyles[size]} ${cursorType} ${width}`}
+      className={`flex items-center font-medium transition justify-center ${shapeStyles[shape]} ${types[type]} ${sizeStyles[size]} ${cursorType} ${width}`}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
     >
