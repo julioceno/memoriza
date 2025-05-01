@@ -17,11 +17,11 @@ export default function Deck() {
   ];
 
   return (
-    <div className="mt-20 md:mt-40">
+    <div className="mt-20 md:mt-40 flex flex-col items-center">
       <SectionTitle>
         Aqui estao seus decks, vamos práticar!
       </SectionTitle>
-      <div className="flex flex-wrap gap-4 mt-10 w-full max-w-7xl justify-center mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">
         {decks.map((deck, index) => (
           <DeckCard
             key={index}
