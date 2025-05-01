@@ -3,19 +3,19 @@
 import SectionTitle from '@/components/SectionTitle';
 import Button from '@/components/Button';
 import React, { useState } from 'react';
-import { Briefcase, Globe, GraduationCap } from 'lucide-react';
+import { Briefcase, Dumbbell, FlaskConical, Gamepad2, Globe, GraduationCap, HandMetal, PiggyBank, Pizza } from 'lucide-react';
 import IconGridItem from '@/components/IconGridItem/IconGrridItem';
 
 const icons = [
     { id: 1, icon: <Briefcase />, label: "Trabalho" },
     { id: 2, icon: <GraduationCap />, label: "Academico" },
     { id: 3, icon: <Globe />, label: "Idiomas" },
-    { id: 4, icon: <Briefcase />, label: "Trabalho" },
-    { id: 5, icon: <GraduationCap />, label: "Academico" },
-    { id: 6, icon: <Globe />, label: "Idiomas" },
-    { id: 7, icon: <Briefcase />, label: "Trabalho" },
-    { id: 8, icon: <GraduationCap />, label: "Academico" },
-    { id: 9, icon: <Globe />, label: "Idiomas" },
+    { id: 4, icon: <FlaskConical />, label: "Labs" },
+    { id: 5, icon: <HandMetal />, label: "Metal" },
+    { id: 6, icon: <Pizza />, label: "Comida" },
+    { id: 7, icon: <Gamepad2 />, label: "Jogos" },
+    { id: 8, icon: <PiggyBank />, label: "Dinheiro" },
+    { id: 9, icon: <Dumbbell />, label: "Academia" },
 ];
 
 
@@ -48,7 +48,7 @@ const IconSelectionPage: React.FC = () => {
                     <Button full type="outlined">
                         Voltar
                     </Button>
-                    <Button full disabled>Próximo</Button>
+                    <Button full disabled={!selectedIcon}>Próximo</Button>
                 </div>
             </div>
         </div>
