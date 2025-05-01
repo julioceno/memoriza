@@ -7,7 +7,7 @@ import { useDeleteDialog } from "./hooks";
 const DeleteDialog: React.FC<IDeleteDialogProps> = ({ 
   onClose, 
   onConfirm,
-  onOpen
+  isOpen
 }) => {
   const {
     handleBackdropClick,
@@ -19,7 +19,7 @@ const DeleteDialog: React.FC<IDeleteDialogProps> = ({
 
   return (
     <AnimatePresence>
-      {onOpen && (
+      {isOpen && (
         <motion.div
           className="fixed inset-0 flex items-center justify-center bg-black/20 z-50 px-3"
           initial={{ opacity: 0 }}

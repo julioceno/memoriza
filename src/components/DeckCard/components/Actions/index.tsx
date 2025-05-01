@@ -26,7 +26,7 @@ const Actions: React.FC = () => {
         </button>
       </div>
       <DeleteDialog
-        onOpen={isDialogOpen}
+        isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
         onConfirm={handleDelete}
       />

@@ -1,5 +1,5 @@
 interface IDeleteDialogProps {
-  onOpen: boolean;
+  isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
 }

@@ -1,0 +1,3 @@
+interface IUseModalReturn {
+    onClose: () => void;
+}

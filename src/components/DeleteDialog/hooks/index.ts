@@ -1,11 +1,6 @@
 import { useToast } from '@/context/toast/toast';
 import { useState } from 'react';
 
-interface IUseDeleteDialog {
-    onConfirm: () => void;
-    onClose: () => void;
-}
-
 export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
     const toast = useToast()
     const [value, setValue] = useState("");
