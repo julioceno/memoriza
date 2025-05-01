@@ -5,7 +5,7 @@ const IconGridItem = ({
     icon,
     id,
     label,
-    isSelected,
+    isSelesasacted,
     onClick
 }: IIconGridItemProps) => {
     const borderStyle = isSelected
