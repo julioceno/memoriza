@@ -24,7 +24,7 @@ const IconGrid: React.FC = () => {
     };
 
     return (
-        <div className="grid grid-cols-3 gap-4 w-fit items-center justify-center">
+        <div className="grid grid-cols-3 gap-2 md:gap-4 w-fit items-center justify-center">
             {icons.map(({ id, icon, label }) => (
                 <IconGridItem
                     key={id}
