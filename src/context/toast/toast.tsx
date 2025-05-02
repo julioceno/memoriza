@@ -3,16 +3,15 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import Toast from '@/components/Toast';
 import { AnimatePresence } from 'framer-motion';
-import { IShowToast, ToastContextType } from './types';
+import { IShowToast, IToastContext  } from './types';
 
-const ToastContext = createContext<ToastContextType | undefined>(undefined);
+const ToastContext = createContext<IToastContext | undefined>(undefined);
 
 export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [toast, setToast] = useState<IShowToast | null>(null);
 
   const show = (props: IShowToast) => {
     setToast(null);
-
     setTimeout(() => {
       setToast(props);
     }, 300);
@@ -37,12 +36,11 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
           />
         )}
       </AnimatePresence>
-    
     </ToastContext.Provider>
   );
 };
 
-export const useToast = (): ToastContextType => {
+export const useToast = (): IToastContext => {
   const context = useContext(ToastContext);
   if (!context) {
     throw new Error('useToast must be used within a ToastProvider');

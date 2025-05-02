@@ -1,7 +1,7 @@
-import { ToastEnum } from "@/constants";
+import { IToastProps } from "@/components/Toast/types";
 
 interface IShowToast extends Omit<IToastProps, 'onClose'> {}
 
-type ToastContextType = {
+interface IToastContext {
     show: (value: IShowToast) => void;
 };

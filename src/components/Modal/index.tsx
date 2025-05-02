@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { IModalProps } from "./types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useModal } from "./hooks";
