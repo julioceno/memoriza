@@ -1,11 +1,6 @@
 import { ToastEnum } from "@/constants";
 
-interface IShowToast {
-    message: string;
-    type?: ToastEnum;
-    duration?: number;
-    maxWidth?: number;
-}
+interface IShowToast extends Omit<IToastProps, 'onClose'> {}
 
 type ToastContextType = {
     show: (value: IShowToast) => void;
