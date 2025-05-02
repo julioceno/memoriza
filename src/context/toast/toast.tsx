@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import Toast from '@/components/Toast';
 import { ToastEnum } from '@/constants';
+import { AnimatePresence } from 'framer-motion';
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
@@ -12,11 +13,10 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const show = ({
     message,
     type = ToastEnum.INFO,
-    duration = 5000,
+    duration = 3000,
     maxWidth = 300,
   }: IShowToast) => {
     setToast({ message, type, maxWidth, duration });
-    setTimeout(() => setToast(null), duration);
   };
 
   const hide = () => {
@@ -26,9 +26,17 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   return (
     <ToastContext.Provider value={{ show }}>
       {children}
-      {toast && (
-        <Toast message={toast.message} type={toast.type} onClose={hide} duration={toast.duration} />
-      )}
+      <AnimatePresence>
+        {toast && (
+          <Toast 
+            message={toast.message} 
+            type={toast.type} 
+            onClose={hide} 
+            duration={toast.duration} 
+          />
+        )}
+      </AnimatePresence>
+    
     </ToastContext.Provider>
   );
 };

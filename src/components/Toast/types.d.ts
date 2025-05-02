@@ -4,5 +4,5 @@ export interface IToastProps {
   message: string;
   type?: ToastEnum;
   duration?: number;
-  onClose?: () => void;
+  onClose: () => void;
 };

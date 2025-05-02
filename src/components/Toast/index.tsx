@@ -1,38 +1,44 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { typeStyles } from './typesStyles';
 import { ToastEnum } from '@/constants';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { IToastProps } from './types';
 
-const Toast: React.FC<IToastProps> = ({ 
-  message, 
+const Toast: React.FC<IToastProps> = ({
+  message,
   type = ToastEnum.INFO,
-  onClose
+  onClose,
+  duration = 3000,
 }) => {
   const { bg, text, icon } = typeStyles[type];
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, duration);
+
+    return () => clearTimeout(timer);
+  }, [duration, onClose]);
 
   return (
-    <AnimatePresence>
-     <motion.div
-          initial={{ x: '100%', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: '100%', opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }} 
-          className={`fixed bottom-5 right-5 flex items-center gap-3 px-4 py-3 max-w-[300px] rounded-lg shadow-lg ${bg} ${text}`}
-        >
-          {React.cloneElement(icon, { className: 'flex-shrink-0 w-6 h-6', strokeWidth: 2.8 })}
-          <span className="text-sm md:text-md font-semibold">{message}</span>
-          <button
-            onClick={onClose}
-            className="flex-shrink-0 p-1 rounded cursor-pointer transition"
-            aria-label="Fechar toast"
-          >
-          <X className="w-4 h-4 text-gray-700" strokeWidth={3}/>
-        </button>
-        </motion.div>
-  </AnimatePresence>
+    <motion.div
+      initial={{ x: '100%', opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: '100%', opacity: 0 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      className={`fixed bottom-5 right-5 flex items-center gap-3 px-4 py-3 max-w-[300px] rounded-lg shadow-lg ${bg} ${text}`}
+    >
+      {React.cloneElement(icon, { className: 'flex-shrink-0 w-6 h-6', strokeWidth: 2.8 })}
+      <span className="text-sm md:text-md font-semibold">{message}</span>
+      <button
+        onClick={onClose}
+        className="flex-shrink-0 p-1 rounded cursor-pointer transition"
+        aria-label="Fechar toast"
+      >
+        <X className="w-4 h-4 text-gray-700" strokeWidth={3} />
+      </button>
+    </motion.div>
   );
 };
 
