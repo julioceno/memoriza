@@ -12,7 +12,7 @@ export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
             toast.show({
                 type: ToastEnum.ERROR,
                 message: "Deck deletado com sucesso!",
-                position: ToastPositionEnum.TOP_RIGHT,
+                position: ToastPositionEnum.BOTTOM_RIGHT,
             })
             onClose();
         }
