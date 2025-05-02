@@ -12,9 +12,9 @@ const DeleteDialog: React.FC<IDeleteDialogProps> = ({
   const {
     handleBackdropClick,
     handleDelete,
-    getStatus,
     value,
-    setValue
+    setValue,
+    disableButton
   } = useDeleteDialog({ onClose, onConfirm });
 
   return (
@@ -46,7 +46,6 @@ const DeleteDialog: React.FC<IDeleteDialogProps> = ({
               <Input
                 value={value}
                 placeholder="Insira a palavra"
-                status={getStatus()}
                 onChange={(e) => setValue(e.target.value)}
               />
             </div>
@@ -56,7 +55,7 @@ const DeleteDialog: React.FC<IDeleteDialogProps> = ({
                   shape="rounded" 
                   type="default" 
                   size="small"
-                  disabled={value.toLocaleLowerCase() === "confirmar" ? false : true}
+                  disabled={disableButton}
                   onClick={handleDelete}
                 >
                   Deletar

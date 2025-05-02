@@ -1,3 +1,5 @@
+import { ToastEnum } from "@/constants";
+
 interface IShowToast {
     message: string;
     type?: ToastEnum;

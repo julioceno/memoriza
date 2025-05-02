@@ -1,20 +1,15 @@
+import { ToastEnum } from '@/constants';
 import { useToast } from '@/context/toast/toast';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
     const toast = useToast()
     const [value, setValue] = useState("");
 
-    const getStatus = () => {
-        if (value.length > 0) return "filled";
-        if (value === "") return "empty";
-        return "filling";
-    };
-
     const handleDelete = () => {
         if (value.toLocaleLowerCase() === "confirmar") {
             toast.show({
-                type: "success",
+                type: ToastEnum.ERROR,
                 message: "Deck deletado com sucesso!",
             })
             onClose();
@@ -28,11 +23,15 @@ export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
         }
     };
 
+    const disableButton = useMemo(() => {
+        return value.toLocaleLowerCase() !== "confirmar";
+    }
+    , [value]);
 
     return {
         handleDelete,
-        getStatus,
         handleBackdropClick,
+        disableButton,
         value,
         setValue
     };
