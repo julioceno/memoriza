@@ -1,10 +1,10 @@
 'use client';
 
 import SectionTitle from '@/components/SectionTitle';
-import Button from '@/components/Button';
 import React, { useState } from 'react';
 import { Briefcase, Dumbbell, FlaskConical, Gamepad2, Globe, GraduationCap, HandMetal, PiggyBank, Pizza } from 'lucide-react';
 import IconGridItem from '@/components/IconGridItem/IconGrridItem';
+import { StepperControls } from '../StepperControls';
 
 const icons = [
     { id: 1, icon: <Briefcase />, label: "Trabalho" },
@@ -30,7 +30,6 @@ export const IconSelection: React.FC = () => {
         <div className="flex flex-col items-center justify-center">
             <div className="mt-32 md:mt-40 flex flex-col justify-center items-center gap-4 md:gap-6 w-full max-w-md md:max-w-xl">
                 <SectionTitle>Escolha um Ícone</SectionTitle>
-
                 <div className="grid grid-cols-3 gap-2 md:gap-3.5 w-fit items-center justify-center">
                     {icons.map(({ id, icon, label }) => (
                         <IconGridItem
@@ -43,6 +42,10 @@ export const IconSelection: React.FC = () => {
                         />
                     ))}
                 </div>
+                <StepperControls 
+                    isNextDisabled={selectedIcon === null}
+                    isPrevVisible={true}
+                />
             </div>
         </div>
     );

@@ -3,9 +3,9 @@ import { useState } from "react";
 
 export const Stepper: React.FC<IStepperProviderProps> = ({ children }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [data, setDataState] = useState<Record<string, any>>({});
+  const [data, setDataState] = useState<Record<string, unknown>>({});
 
-  const setData = (key: string, value: any) => {
+  const setData = (key: string, value: unknown) => {
     setDataState((prev) => ({ ...prev, [key]: value }));
   };
 

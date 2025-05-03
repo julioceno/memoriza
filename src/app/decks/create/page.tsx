@@ -9,7 +9,7 @@ import { StepperControls } from '@/modules/create/components/StepperControls';
 const CreatePage: React.FC = () => {
     return (
         <div className='flex flex-col items-center'>
-            <div className='flex flex-col w-full max-w-md md:max-w-xl gap-4 md:gap-6'>
+            <div className='flex flex-col w-full'>
                 <Stepper>
                     <Step stepIndex={0}>
                         <CreateName />
@@ -20,7 +20,6 @@ const CreatePage: React.FC = () => {
                     <Step stepIndex={2}>
                         Ultimo
                     </Step>
-                    <StepperControls />
                 </Stepper>
             </div>
         </div>

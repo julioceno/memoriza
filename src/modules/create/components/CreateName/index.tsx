@@ -1,7 +1,7 @@
-import Button from "@/components/Button";
 import Input from "@/components/Input";
 import SectionTitle from "@/components/SectionTitle";
 import { useState } from "react";
+import { StepperControls } from "../StepperControls";
 
 export const CreateName: React.FC = () => {
     const [deckName, setDeckName] = useState("");
@@ -18,6 +18,10 @@ export const CreateName: React.FC = () => {
                     size='large'
                     full
                     onChange={(e) => setDeckName(e.target.value)}
+                />
+                <StepperControls 
+                    isNextDisabled={!deckName.length}
+                    isPrevVisible={false}
                 />
             </div>
         </div>
