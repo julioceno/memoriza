@@ -1,10 +1,10 @@
 'use client';
 
-import SectionTitle from '@/components/SectionTitle';
 import React, { useState } from 'react';
 import { Briefcase, Dumbbell, FlaskConical, Gamepad2, Globe, GraduationCap, HandMetal, PiggyBank, Pizza } from 'lucide-react';
 import IconGridItem from '@/modules/create/components/IconSelection/components/IconGridItem/IconGrridItem';
 import { StepperControls } from '../StepperControls';
+import { SectionTitle } from '@/components';
 
 const icons = [
     { id: 1, icon: <Briefcase />, label: "Trabalho" },
