@@ -43,13 +43,6 @@ export const IconSelection: React.FC = () => {
                         />
                     ))}
                 </div>
-
-                <div className="flex gap-3 w-full">
-                    <Button full type="outlined">
-                        Voltar
-                    </Button>
-                    <Button full disabled={!selectedIcon}>Próximo</Button>
-                </div>
             </div>
         </div>
     );
