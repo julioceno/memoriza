@@ -1,0 +1,3 @@
+interface IStepperProviderProps {
+    children: ReactNode;
+}

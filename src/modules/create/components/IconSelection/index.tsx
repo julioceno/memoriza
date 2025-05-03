@@ -19,7 +19,7 @@ const icons = [
 ];
 
 
-const IconSelectionPage: React.FC = () => {
+export const IconSelection: React.FC = () => {
     const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
 
     const handleSelect = (id: number) => {
@@ -54,5 +54,3 @@ const IconSelectionPage: React.FC = () => {
         </div>
     );
 };
-
-export default IconSelectionPage;
