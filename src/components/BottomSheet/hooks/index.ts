@@ -1,6 +1,8 @@
-export function useModal({
+import { IUseBottomSheet } from "./types";
+
+export const useBottomSheet = ({
     onClose
-}: IUseModal) {
+}: IUseBottomSheet) => {
     const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
             onClose();
