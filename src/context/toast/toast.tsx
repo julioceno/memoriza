@@ -17,7 +17,6 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }, 300);
   };
 
-
   const hide = () => {
     setToast(null);
   };

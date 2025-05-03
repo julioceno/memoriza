@@ -1,5 +1,6 @@
 import { ToastEnum, ToastPositionEnum } from '@/constants';
 import { useToast } from '@/context/toast/toast';
+import useCloseOnEscape from '@/hooks/closeModal';
 import { useMemo, useState } from 'react';
 
 export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
@@ -24,6 +25,8 @@ export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
             onClose();
         }
     };
+
+    useCloseOnEscape(onClose);
 
     const disableButton = useMemo(() => {
         return value.toLocaleLowerCase() !== "confirmar";

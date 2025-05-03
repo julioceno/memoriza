@@ -1,4 +1,5 @@
 'use client';
+
 import React  from 'react';
 import { ToastEnum } from '@/constants';
 import { motion } from 'framer-motion';
