@@ -1,7 +1,6 @@
 'use client';
-import DeckCard from "@/components/DeckCard";
+import { DeckCard, SectionTitle } from "@/components";
 import { StatusBadgeEnum } from "@/components/DeckCard/components/StatusBadge/typesStyles";
-import SectionTitle from "@/components/SectionTitle";
 
 export default function Deck() {
   const decks = [

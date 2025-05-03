@@ -1,7 +1,6 @@
-import Input from "@/components/Input";
-import SectionTitle from "@/components/SectionTitle";
 import { useState } from "react";
 import { StepperControls } from "../StepperControls";
+import { Input, SectionTitle } from "@/components";
 
 export const CreateName: React.FC = () => {
     const [deckName, setDeckName] = useState("");

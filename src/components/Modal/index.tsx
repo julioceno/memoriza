@@ -3,7 +3,7 @@ import { IModalProps } from "./types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useModal } from "./hooks";
 
-const Modal = ({
+export const Modal = ({
   isOpen,
   onClose,
 }: IModalProps) => {
@@ -34,5 +34,3 @@ const Modal = ({
     </AnimatePresence>
   );
 };
-
-export default Modal;

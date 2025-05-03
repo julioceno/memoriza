@@ -1,4 +1,4 @@
-import { useStepper } from "@/context/steoer";
+import { useStepper } from "@/context/stepper";
 import { ReactNode } from "react";
 
 interface StepProps {

@@ -10,7 +10,7 @@ interface IDeckCardProps {
   statusBadgeType: StatusBadgeEnum;
 }
 
-const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusBadgeType }) => {
+export const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusBadgeType }) => {
   return (
     <div className="flex flex-col p-4 bg-white w-sm rounded-lg shadow-md hover:shadow-lg transition">
       <div className="flex items-start justify-between gap-1 sm:gap-4 w-full">
@@ -32,5 +32,3 @@ const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusBadgeType 
     </div>
   );
 };
-
-export default DeckCard;

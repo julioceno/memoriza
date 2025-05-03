@@ -1,10 +1,10 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Button from "../Button";
-import Input from "../Input";
 import { useDeleteDialog } from "./hooks";
+import { Button } from "../Button";
+import { Input } from "../Input";
 
-const DeleteDialog: React.FC<IDeleteDialogProps> = ({ 
+export const DeleteDialog: React.FC<IDeleteDialogProps> = ({ 
   onClose, 
   onConfirm,
   isOpen
@@ -50,7 +50,7 @@ const DeleteDialog: React.FC<IDeleteDialogProps> = ({
               />
             </div>
             <div className="w-30 sm:w-4/12">
-                <Button 
+                <Button
                   full 
                   shape="rounded" 
                   type="default" 

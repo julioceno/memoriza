@@ -2,7 +2,7 @@
 import React from 'react';
 import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import Button from '../Button';
+import { Button } from '../Button';
 
 const Header: React.FC = () => {
     const { back, push } = useRouter()

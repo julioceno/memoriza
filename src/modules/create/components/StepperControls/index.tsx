@@ -1,6 +1,6 @@
-import Button from "@/components/Button";
-import { useStepper } from "@/context/steoer";
+import { useStepper } from "@/context/stepper";
 import { IStepperControlsProps } from "./types";
+import { Button } from "@/components";
 
 export const StepperControls: React.FC<IStepperControlsProps> = ({
     isNextDisabled,

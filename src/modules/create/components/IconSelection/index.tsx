@@ -3,7 +3,7 @@
 import SectionTitle from '@/components/SectionTitle';
 import React, { useState } from 'react';
 import { Briefcase, Dumbbell, FlaskConical, Gamepad2, Globe, GraduationCap, HandMetal, PiggyBank, Pizza } from 'lucide-react';
-import IconGridItem from '@/components/IconGridItem/IconGrridItem';
+import IconGridItem from '@/modules/create/components/IconSelection/components/IconGridItem/IconGrridItem';
 import { StepperControls } from '../StepperControls';
 
 const icons = [

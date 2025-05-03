@@ -1,7 +1,7 @@
 export interface IStepperContextProps {
     currentStep: number;
-    data: Record<string, any>;
-    setData: (key: string, value: any) => void;
+    data: Record<string, unknown>;
+    setData: (key: string, value: unknown) => void;
     nextStep: () => void;
     prevStep: () => void;
 }

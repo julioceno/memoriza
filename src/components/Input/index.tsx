@@ -18,7 +18,7 @@ const placeholderColors = {
   empty: "placeholder-gray-400",
 };
 
-const Input: React.FC<IInputProps> = ({
+export const Input: React.FC<IInputProps> = ({
   value,
   placeholder,
   size = "small",
@@ -67,5 +67,3 @@ const Input: React.FC<IInputProps> = ({
     </div>
   );
 };
-
-export default Input;

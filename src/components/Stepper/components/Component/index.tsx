@@ -1,4 +1,4 @@
-import { StepperContext } from "@/context/steoer";
+import { StepperContext } from "@/context/stepper";
 import { useState } from "react";
 
 export const Stepper: React.FC<IStepperProviderProps> = ({ children }) => {

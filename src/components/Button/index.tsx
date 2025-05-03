@@ -2,7 +2,7 @@ import React from 'react';
 import { IButtonProps } from './types';
 import { icons, LucideIcon } from 'lucide-react';
 
-const Button: React.FC<IButtonProps> = ({
+export const Button: React.FC<IButtonProps> = ({
   onClick,
   shape = 'rounded',
   type = 'default',
@@ -48,5 +48,3 @@ const Button: React.FC<IButtonProps> = ({
     </button>
   );
 };
-
-export default Button;
