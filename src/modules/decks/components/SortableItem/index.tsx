@@ -1,4 +1,4 @@
-import { useSortable } from "@dnd-kit/sortable";
+import { defaultAnimateLayoutChanges, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { ISortableItemProps } from "./types";
 
@@ -15,7 +15,7 @@ export function SortableItem({ id, children }: ISortableItemProps) {
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
-        zIndex: isDragging ? 9999 : 1,
+        zIndex: isDragging ? 2 : 1,
     };
 
     return (

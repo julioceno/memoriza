@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from "react";
-import { DeckCard, SectionTitle } from "@/components";
-import { StatusBadgeEnum } from "@/components/DeckCard/components/StatusBadge/typesStyles";
+import { SectionTitle } from "@/components";
+import { StatusBadgeEnum } from "@/modules/decks/components/DeckCard/components/StatusBadge/typesStyles";
 
 import {
   DndContext,
@@ -19,7 +19,7 @@ import {
   SortableContext,
   sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
-import { SortableItem } from "@/modules";
+import { DeckCard, SortableItem } from "@/modules";
 
 export default function Deck() {
   const [decks, setDecks] = useState([

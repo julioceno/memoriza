@@ -1,5 +1,4 @@
 export * from "./Button";
-export * from "./DeckCard";
 export * from "./DeleteDialog";
 export * from "./Header";
 export * from "./Input";
