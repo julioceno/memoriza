@@ -4,7 +4,6 @@ import DeleteDialog from "@/components/DeleteDialog";
 
 const Actions: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
   const handleDelete = () => {
     setIsDialogOpen(false);
   };
