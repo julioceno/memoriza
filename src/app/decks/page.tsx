@@ -12,6 +12,7 @@ import {
   useSensor,
   useSensors,
   DragEndEvent,
+  TouchSensor,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -20,6 +21,7 @@ import {
   sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
 import { DeckCard, SortableItem } from "@/modules";
+import { restrictToFirstScrollableAncestor, restrictToParentElement } from "@dnd-kit/modifiers";
 
 export default function Deck() {
   const [decks, setDecks] = useState([
@@ -32,19 +34,30 @@ export default function Deck() {
 
   const sensors = useSensors(
     useSensor(PointerSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 200,
+        tolerance: 5,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
 
+
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
-    if (active.id !== over?.id) {
-      const oldIndex = decks.findIndex(deck => deck.id === active.id);
-      const newIndex = decks.findIndex(deck => deck.id === over!.id);
-      setDecks(arrayMove(decks, oldIndex, newIndex));
-    }
+    if (active.id === over?.id) return;
+
+    setDecks((prev) => {
+      const oldIndex = prev.findIndex(deck => deck.id === active.id);
+      const newIndex = prev.findIndex(deck => deck.id === over!.id);
+
+      const newDecks = arrayMove(prev, oldIndex, newIndex);
+      return newDecks;
+    });
   }
 
   return (
@@ -57,6 +70,7 @@ export default function Deck() {
         sensors={sensors}
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
+        modifiers={[restrictToParentElement, restrictToFirstScrollableAncestor]}
       >
         <SortableContext
           items={decks.map(deck => deck.id)}
