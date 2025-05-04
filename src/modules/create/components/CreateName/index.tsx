@@ -18,7 +18,7 @@ export const CreateName: React.FC = () => {
                     full
                     onChange={(e) => setDeckName(e.target.value)}
                 />
-                <StepperControls 
+                <StepperControls
                     isNextDisabled={!deckName.length}
                     isPrevVisible={false}
                 />

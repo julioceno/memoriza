@@ -4,6 +4,7 @@ import React from 'react';
 import { Step, Stepper } from '@/components/Stepper';
 import { CreateName } from '../../../modules/create/components/CreateName';
 import { IconSelection } from '@/modules/create/components/IconSelection';
+import { CardsStep } from '@/modules/create/components/Cards';
 
 const CreatePage: React.FC = () => {
     return (
@@ -17,7 +18,7 @@ const CreatePage: React.FC = () => {
                         <IconSelection />
                     </Step>
                     <Step stepIndex={2}>
-                        Ultimo
+                        <CardsStep />
                     </Step>
                 </Stepper>
             </div>
