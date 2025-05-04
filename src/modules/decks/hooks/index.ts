@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { StatusBadgeEnum } from "../components/DeckCard/components/StatusBadge/typesStyles";
 import { DragEndEvent, KeyboardSensor, PointerSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 export function useDecks() {
+    const [activeId, setActiveId] = useState<string | null>(null);
     const [decks, setDecks] = useState([
         { id: "1", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
         { id: "2", title: "Fundamentos de JavaScript", cardCount: 15, statusBadgeType: StatusBadgeEnum.ERROR },
@@ -15,6 +16,10 @@ export function useDecks() {
         { id: "8", title: "Redes de Computadores", cardCount: 11, statusBadgeType: StatusBadgeEnum.WARNING },
         { id: "9", title: "Estrutura de Sistemas Operacionais", cardCount: 13, statusBadgeType: StatusBadgeEnum.SUCCESS },
     ]);
+
+    const activeDeck = useMemo(() => {
+        return decks.find(deck => deck.id === activeId);
+    }, [activeId, decks]);
 
     const sensors = useSensors(
         useSensor(PointerSensor),
@@ -28,6 +33,11 @@ export function useDecks() {
             coordinateGetter: sortableKeyboardCoordinates,
         })
     );
+
+    function handleDragStart(event: DragEndEvent) {
+        const { active } = event;
+        setActiveId(active.id.toString());
+    }
 
     function handleDragEnd(event: DragEndEvent) {
         const { active, over } = event;
@@ -43,9 +53,16 @@ export function useDecks() {
         });
     }
 
+    function handleDragCancel() {
+        setActiveId(null);
+    }
+ 
     return {
         decks,
         handleDragEnd,
+        handleDragStart,
+        handleDragCancel,
+        activeDeck,
         sensors
     }
 }

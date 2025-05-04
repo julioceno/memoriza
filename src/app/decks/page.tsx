@@ -19,11 +19,10 @@ export default function Deck() {
     sensors,
     handleDragEnd,
     decks,
+    handleDragStart,
+    handleDragCancel,
+    activeDeck
   } = useDecks();
-
-  const [activeId, setActiveId] = useState<string | null>(null);
-
-  const activeDeck = decks.find((deck) => deck.id === activeId);
 
   return (
     <div className="mt-20 md:mt-40 flex flex-col items-center">
@@ -34,12 +33,9 @@ export default function Deck() {
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
-        onDragStart={(event) => setActiveId(event.active.id as string)}
-        onDragEnd={(event) => {
-          handleDragEnd(event);
-          setActiveId(null);
-        }}
-        onDragCancel={() => setActiveId(null)}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDragCancel={handleDragCancel}
         modifiers={[restrictToParentElement, restrictToFirstScrollableAncestor]}
       >
         <SortableContext
