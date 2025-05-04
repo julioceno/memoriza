@@ -11,6 +11,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  DragEndEvent,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -18,6 +19,7 @@ import {
   SortableContext,
   sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
+import { SortableItem } from "@/modules";
 
 export default function Deck() {
   const [decks, setDecks] = useState([
@@ -26,12 +28,6 @@ export default function Deck() {
     { id: "3", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
     { id: "4", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.WARNING },
     { id: "5", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
-
-    { id: "10", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
-    { id: "20", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.ERROR },
-    { id: "30", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
-    { id: "40", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.WARNING },
-    { id: "50", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
   ]);
 
   const sensors = useSensors(
@@ -41,12 +37,12 @@ export default function Deck() {
     })
   );
 
-  function handleDragEnd(event: any) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
-    if (active.id !== over.id) {
+    if (active.id !== over?.id) {
       const oldIndex = decks.findIndex(deck => deck.id === active.id);
-      const newIndex = decks.findIndex(deck => deck.id === over.id);
+      const newIndex = decks.findIndex(deck => deck.id === over!.id);
       setDecks(arrayMove(decks, oldIndex, newIndex));
     }
   }
@@ -70,6 +66,7 @@ export default function Deck() {
             {decks.map((deck) => (
               <SortableItem key={deck.id} id={deck.id}>
                 <DeckCard
+                  id={deck.id}
                   title={deck.title}
                   cardCount={deck.cardCount}
                   statusBadgeType={deck.statusBadgeType}
@@ -79,48 +76,6 @@ export default function Deck() {
           </div>
         </SortableContext>
       </DndContext>
-    </div>
-  );
-}
-
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-
-type Props = {
-  id: string;
-  children: React.ReactNode;
-};
-
-export function SortableItem({ id, children }: Props) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    zIndex: isDragging ? 9999 : 1,
-  };
-
-
-  return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-    >
-      {children}
-      <button
-        className=" right-2 p-2 bg-blue-500 text-white rounded"
-        {...listeners}  
-      >
-        Mover
-      </button>
     </div>
   );
 }

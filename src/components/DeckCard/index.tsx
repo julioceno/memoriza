@@ -4,7 +4,7 @@ import Actions from "./components/Actions";
 import StatusBadge from "./components/StatusBadge";
 
 // TODO: move component for module
-export const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusBadgeType }) => {
+export const DeckCard: React.FC<IDeckCardProps> = ({ id, title, cardCount, statusBadgeType }) => {
   return (
     <div className="flex flex-col p-4 bg-white w-sm rounded-lg shadow-md hover:shadow-lg transition">
       <div className="flex items-start justify-between gap-1 sm:gap-4 w-full">
@@ -13,7 +13,7 @@ export const DeckCard: React.FC<IDeckCardProps> = ({ title, cardCount, statusBad
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
           <StatusBadge type={statusBadgeType} />
-          <Actions />
+          <Actions id={id} />
         </div>
       </div>
       <div className="flex-start w-full">
