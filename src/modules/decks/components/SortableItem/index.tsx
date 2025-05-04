@@ -5,7 +5,6 @@ import { ISortableItemProps } from './types';
 export function SortableItem({ id, children }: ISortableItemProps) {
   const {
     attributes,
-    listeners,
     setNodeRef,
     transform,
     transition,

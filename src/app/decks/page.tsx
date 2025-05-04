@@ -1,64 +1,23 @@
 'use client';
 
-import { useState } from "react";
 import { SectionTitle } from "@/components";
-import { StatusBadgeEnum } from "@/modules/decks/components/DeckCard/components/StatusBadge/typesStyles";
-
 import {
   DndContext,
   closestCenter,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  DragEndEvent,
-  TouchSensor,
 } from "@dnd-kit/core";
 import {
-  arrayMove,
   rectSortingStrategy,
   SortableContext,
-  sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
-import { DeckCard, SortableItem } from "@/modules";
+import { DeckCard, SortableItem, useDecks } from "@/modules";
 import { restrictToFirstScrollableAncestor, restrictToParentElement } from "@dnd-kit/modifiers";
 
 export default function Deck() {
-  const [decks, setDecks] = useState([
-    { id: "1", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
-    { id: "2", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.ERROR },
-    { id: "3", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
-    { id: "4", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.WARNING },
-    { id: "5", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
-  ]);
-
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 200,
-        tolerance: 5,
-      },
-    }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
-
-
-  function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event;
-
-    if (active.id === over?.id) return;
-
-    setDecks((prev) => {
-      const oldIndex = prev.findIndex(deck => deck.id === active.id);
-      const newIndex = prev.findIndex(deck => deck.id === over!.id);
-
-      const newDecks = arrayMove(prev, oldIndex, newIndex);
-      return newDecks;
-    });
-  }
+  const {
+    sensors,
+    handleDragEnd,
+    decks,
+  } = useDecks()
 
   return (
     <div className="mt-20 md:mt-40 flex flex-col items-center">
