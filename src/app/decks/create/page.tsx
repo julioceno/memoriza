@@ -2,9 +2,7 @@
 
 import React from 'react';
 import { Step, Stepper } from '@/components/Stepper';
-import { CreateName } from '../../../modules/create/components/CreateName';
-import { IconSelection } from '@/modules/create/components/IconSelection';
-import { CardsStep } from '@/modules/create/components/Cards';
+import { CardsStep, CreateNameStep, IconSelectionStep } from '@/modules';
 
 const CreatePage: React.FC = () => {
     return (
@@ -12,10 +10,10 @@ const CreatePage: React.FC = () => {
             <div className='flex flex-col w-full'>
                 <Stepper>
                     <Step stepIndex={0}>
-                        <CreateName />
+                        <CreateNameStep />
                     </Step>
                     <Step stepIndex={1}>
-                        <IconSelection />
+                        <IconSelectionStep />
                     </Step>
                     <Step stepIndex={2}>
                         <CardsStep />

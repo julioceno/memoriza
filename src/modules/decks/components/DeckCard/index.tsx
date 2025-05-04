@@ -3,7 +3,6 @@ import { Briefcase, NotebookText } from "lucide-react";
 import Actions from "./components/Actions";
 import StatusBadge from "./components/StatusBadge";
 
-// TODO: move component for module
 export const DeckCard: React.FC<IDeckCardProps> = ({ id, title, cardCount, statusBadgeType }) => {
   return (
     <div className="flex flex-col p-4 bg-white w-sm rounded-lg shadow-md hover:shadow-lg transition">

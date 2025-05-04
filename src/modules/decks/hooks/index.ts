@@ -29,7 +29,6 @@ export function useDecks() {
         })
     );
 
-
     function handleDragEnd(event: DragEndEvent) {
         const { active, over } = event;
 

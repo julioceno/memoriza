@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { Briefcase, Dumbbell, FlaskConical, Gamepad2, Globe, GraduationCap, HandMetal, PiggyBank, Pizza } from 'lucide-react';
-import IconGridItem from '@/modules/create/components/IconSelection/components/IconGridItem/IconGrridItem';
-import { StepperControls } from '../StepperControls';
+import IconGridItem from '@/modules/create/components/Steps/IconSelectionStep/components/IconGridItem/IconGrridItem';
+import { StepperControls } from '../../StepperControls';
 import { SectionTitle } from '@/components';
 
 const icons = [
@@ -18,8 +18,7 @@ const icons = [
     { id: 9, icon: <Dumbbell />, label: "Academia" },
 ];
 
-
-export const IconSelection: React.FC = () => {
+export const IconSelectionStep: React.FC = () => {
     const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
 
     const handleSelect = (id: number) => {

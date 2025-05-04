@@ -1,4 +1,4 @@
-import { StepperControls } from "../StepperControls";
+import { StepperControls } from "../../StepperControls";
 import { SectionTitle } from "@/components";
 
 export const CardsStep: React.FC = () => {
