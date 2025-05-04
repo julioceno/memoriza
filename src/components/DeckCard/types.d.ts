@@ -1,5 +1,5 @@
-export interface IDeckCardProps {
-    title: string;
-    cardCount: number;
-    statusMessage: string;
+interface IDeckCardProps {
+  title: string;
+  cardCount: number;
+  statusBadgeType: StatusBadgeEnum;
 }
