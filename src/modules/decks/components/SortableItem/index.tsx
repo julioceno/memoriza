@@ -14,6 +14,7 @@ export function SortableItem({ id, children }: ISortableItemProps) {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    opacity: isDragging ? 0 : 1,
     zIndex: isDragging ? 2 : undefined,
     touchAction: 'none'
   };

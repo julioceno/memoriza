@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from "react";
 import { SectionTitle } from "@/components";
 import {
   DndContext,
   closestCenter,
+  DragOverlay,
 } from "@dnd-kit/core";
 import {
   rectSortingStrategy,
@@ -17,18 +19,27 @@ export default function Deck() {
     sensors,
     handleDragEnd,
     decks,
-  } = useDecks()
+  } = useDecks();
+
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  const activeDeck = decks.find((deck) => deck.id === activeId);
 
   return (
     <div className="mt-20 md:mt-40 flex flex-col items-center">
       <SectionTitle>
-        Aqui estao seus decks, vamos práticar!
+        Aqui estão seus decks, vamos práticar!
       </SectionTitle>
 
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
+        onDragStart={(event) => setActiveId(event.active.id as string)}
+        onDragEnd={(event) => {
+          handleDragEnd(event);
+          setActiveId(null);
+        }}
+        onDragCancel={() => setActiveId(null)}
         modifiers={[restrictToParentElement, restrictToFirstScrollableAncestor]}
       >
         <SortableContext
@@ -48,6 +59,17 @@ export default function Deck() {
             ))}
           </div>
         </SortableContext>
+
+        <DragOverlay>
+          {activeDeck ? (
+            <DeckCard
+              id={activeDeck.id}
+              title={activeDeck.title}
+              cardCount={activeDeck.cardCount}
+              statusBadgeType={activeDeck.statusBadgeType}
+            />
+          ) : null}
+        </DragOverlay>
       </DndContext>
     </div>
   );

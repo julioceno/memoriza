@@ -8,7 +8,6 @@ export const CardsStep: React.FC = () => {
                 <SectionTitle>
                     Crie seus cards
                 </SectionTitle>
-                
                 <StepperControls
                     isNextDisabled={true}
                 />
