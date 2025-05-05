@@ -5,6 +5,7 @@ export function useDecks() {
     const {
         items: decks,
         activeItem: activeDeck,
+        itemsIds: decksIds,
         handleDragStart,
         handleDragEnd,
         handleDragCancel,
@@ -29,6 +30,7 @@ export function useDecks() {
         handleDragCancel,
         activeDeck,
         sensors,
-        sortableStrategy
+        sortableStrategy,
+        decksIds
     }
 }

@@ -13,7 +13,8 @@ export const CardsStep: React.FC = () => {
         handleDragStart,
         cards,
         sortableStrategy,
-        activeCard
+        activeCard,
+        cardsIds
     } = useCardStep()
 
     return (
@@ -37,8 +38,7 @@ export const CardsStep: React.FC = () => {
                         modifiers={[restrictToParentElement, restrictToFirstScrollableAncestor]}
                     >
                         <SortableContext
-                            // TODO: adicionar esse items dentro de um useMemo no useDecks
-                            items={cards.map(deck => deck.id)}
+                            items={cardsIds}
                             strategy={sortableStrategy}
                         >
                             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">

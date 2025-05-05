@@ -4,6 +4,7 @@ export function useCardStep() {
     const {
         items: cards,
         activeItem: activeCard,
+        itemsIds: cardsIds,
         handleDragStart,
         handleDragEnd,
         handleDragCancel,
@@ -28,6 +29,7 @@ export function useCardStep() {
         handleDragCancel,
         activeCard,
         sensors,
-        sortableStrategy
+        sortableStrategy,
+        cardsIds
     }
 }

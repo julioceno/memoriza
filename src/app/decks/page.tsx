@@ -18,7 +18,8 @@ export default function Deck() {
     handleDragStart,
     handleDragCancel,
     activeDeck,
-    sortableStrategy
+    sortableStrategy,
+    decksIds
   } = useDecks();
 
   return (
@@ -36,8 +37,7 @@ export default function Deck() {
         modifiers={[restrictToParentElement, restrictToFirstScrollableAncestor]}
       >
         <SortableContext
-          // TODO: adicionar esse items dentro de um useMemo no useDecks
-          items={decks.map(deck => deck.id)}
+          items={decksIds}
           strategy={sortableStrategy}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">

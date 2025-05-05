@@ -44,6 +44,10 @@ export function useSortableList<T extends IItem>(initialItems: T[]) {
     return items.find((item) => item.id === activeId) || null;
   }, [activeId, items]);
 
+  const itemsIds = useMemo(() => {
+    return items.map((item) => item.id)
+  }, [items])
+
   function handleDragStart(event: DragStartEvent) {
     const { active } = event;
     setActiveId(active.id.toString());
@@ -75,5 +79,6 @@ export function useSortableList<T extends IItem>(initialItems: T[]) {
     handleDragCancel,
     sensors,
     sortableStrategy,
+    itemsIds
   };
 }
