@@ -1,5 +1,6 @@
 import { StepperControls } from "../../StepperControls";
-import { SectionTitle } from "@/components";
+import { Button, SectionTitle } from "@/components";
+import { FlashCard } from "./components";
 
 export const CardsStep: React.FC = () => {
     return (
@@ -8,6 +9,14 @@ export const CardsStep: React.FC = () => {
                 <SectionTitle>
                     Crie seus cards
                 </SectionTitle>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <Button shape="square">
+                            Criar Flash Card
+                        </Button>
+                    </div>
+                    <FlashCard title="aaa" id={"1"}/>
+                </div>
                 <StepperControls
                     isNextDisabled={true}
                 />
