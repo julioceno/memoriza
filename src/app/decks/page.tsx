@@ -1,13 +1,13 @@
 'use client';
 
-import { SectionTitle } from "@/components";
+import { SectionTitle, SortableItem } from "@/components";
 import {
   DndContext,
   closestCenter,
   DragOverlay,
 } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-import { DeckCard, SortableItem, useDecks } from "@/modules";
+import { DeckCard, useDecks } from "@/modules";
 import { restrictToFirstScrollableAncestor, restrictToParentElement } from "@dnd-kit/modifiers";
 
 export default function Deck() {
@@ -36,6 +36,7 @@ export default function Deck() {
         modifiers={[restrictToParentElement, restrictToFirstScrollableAncestor]}
       >
         <SortableContext
+          // TODO: adicionar esse items dentro de um useMemo no useDecks
           items={decks.map(deck => deck.id)}
           strategy={sortableStrategy}
         >

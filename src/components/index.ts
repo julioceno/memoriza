@@ -7,3 +7,4 @@ export * from "./SectionTitle";
 export * from "./Stepper";
 export * from "./Toast";
 export * from "./BottomSheet";
+export * from "./SortableItem"
