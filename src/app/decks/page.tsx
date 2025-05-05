@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from "react";
 import { SectionTitle } from "@/components";
 import {
   DndContext,
@@ -21,7 +20,8 @@ export default function Deck() {
     decks,
     handleDragStart,
     handleDragCancel,
-    activeDeck
+    activeDeck,
+    sortableStrategy
   } = useDecks();
 
   return (
@@ -40,9 +40,9 @@ export default function Deck() {
       >
         <SortableContext
           items={decks.map(deck => deck.id)}
-          strategy={rectSortingStrategy}
+          strategy={sortableStrategy}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">
+          <div className="flex flex-col gap-4 mt-6 lg:grid lg:grid-cols-2 xl:grid-cols-3">
             {decks.map((deck) => (
               <SortableItem key={deck.id} id={deck.id}>
                 <DeckCard

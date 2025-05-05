@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function useCloseOnEscape(onClose: () => void) {
+export function useCloseOnEscape(onClose: () => void) {
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
@@ -15,5 +15,3 @@ function useCloseOnEscape(onClose: () => void) {
         };
     }, [onClose]);
 }
-
-export default useCloseOnEscape;

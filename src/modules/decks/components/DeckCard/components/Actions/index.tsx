@@ -24,7 +24,7 @@ const Actions: React.FC<IDeckActionsProps> = ({ id }) => {
         >
           <Trash2 className="w-5 h-5" />
         </button>
-        <button className="text-gray-500 hover:text-gray-900 cursor-move" {...listeners}>
+        <button className="text-gray-500 hover:text-gray-900 cursor-move touch-none" {...listeners}>
           <GripVertical className="w-5 h-5" />
         </button>
       </div>

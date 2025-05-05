@@ -1,3 +1,4 @@
+'use client';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { ISortableItemProps } from './types';
@@ -15,8 +16,7 @@ export function SortableItem({ id, children }: ISortableItemProps) {
     transform: CSS.Transform.toString(transform),
     transition,
     opacity: isDragging ? 0 : 1,
-    zIndex: isDragging ? 2 : undefined,
-    touchAction: 'none'
+    zIndex: isDragging ? 2 : undefined
   };
 
   return (

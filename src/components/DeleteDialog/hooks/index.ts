@@ -1,6 +1,6 @@
 import { ToastEnum, ToastPositionEnum } from '@/constants';
 import { useToast } from '@/context/toast/toast';
-import useCloseOnEscape from '@/hooks/closeModal';
+import { useCloseOnEscape } from '@/hooks/useCloseOnEscape';
 import { useMemo, useState } from 'react';
 
 export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
