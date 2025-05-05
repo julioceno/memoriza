@@ -8,12 +8,11 @@ export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
     const [value, setValue] = useState("");
 
     const handleDelete = () => {
-        // TODO: alterar o position quando estiver no mobile
         if (value.toLocaleLowerCase() === "confirmar") {
             toast.show({
                 type: ToastEnum.ERROR,
                 message: "Deck deletado com sucesso!",
-                position: ToastPositionEnum.BOTTOM_RIGHT,
+                position: ToastPositionEnum.BOTTOM_CENTER,
             })
             onClose();
         }
