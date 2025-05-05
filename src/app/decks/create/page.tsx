@@ -7,7 +7,7 @@ import { CardsStep, CreateNameStep, IconSelectionStep } from '@/modules';
 const CreatePage: React.FC = () => {
     return (
         <div className='flex flex-col items-center'>
-            <div className='flex flex-col w-full'>
+            <div className='flex flex-col w-full mt-32 md:mt-40'>
                 <Stepper>
                     <Step stepIndex={0}>
                         <CreateNameStep />
