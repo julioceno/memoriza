@@ -1,12 +1,16 @@
-import { useMemo, useState } from "react";
 import { StatusBadgeEnum } from "../components/DeckCard/components/StatusBadge/typesStyles";
-import { DragEndEvent, KeyboardSensor, PointerSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
-import { arrayMove, rectSortingStrategy, sortableKeyboardCoordinates, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { useSortableList } from "@/hooks";
 
 export function useDecks() {
-    const [activeId, setActiveId] = useState<string | null>(null);
-    const [decks, setDecks] = useState([
+    const {
+        items: decks,
+        activeItem: activeDeck,
+        handleDragStart,
+        handleDragEnd,
+        handleDragCancel,
+        sensors,
+        sortableStrategy,
+    } = useSortableList([
         { id: "1", title: "Entrevista Java", cardCount: 10, statusBadgeType: StatusBadgeEnum.SUCCESS },
         { id: "2", title: "Fundamentos de JavaScript", cardCount: 15, statusBadgeType: StatusBadgeEnum.ERROR },
         { id: "3", title: "Algoritmos e Estruturas de Dados", cardCount: 20, statusBadgeType: StatusBadgeEnum.SUCCESS },
@@ -18,52 +22,6 @@ export function useDecks() {
         { id: "9", title: "Estrutura de Sistemas Operacionais", cardCount: 13, statusBadgeType: StatusBadgeEnum.SUCCESS },
     ]);
 
-    const isMobile = useIsMobile();
-    const sensors = useSensors(
-        useSensor(PointerSensor),
-        useSensor(TouchSensor, {
-            activationConstraint: {
-                delay: 200,
-                tolerance: 5,
-            },
-        }),
-        useSensor(KeyboardSensor, {
-            coordinateGetter: sortableKeyboardCoordinates,
-        })
-    );
-
-    const sortableStrategy = useMemo(() => {
-        if (isMobile) return verticalListSortingStrategy
-
-        return rectSortingStrategy
-    }, [isMobile])
-    const activeDeck = useMemo(() => {
-        return decks.find(deck => deck.id === activeId);
-    }, [activeId, decks]);
-    
-    function handleDragStart(event: DragEndEvent) {
-        const { active } = event;
-        setActiveId(active.id.toString());
-    }
-
-    function handleDragEnd(event: DragEndEvent) {
-        const { active, over } = event;
-
-        if (active.id === over?.id) return;
-
-        setDecks((prev) => {
-            const oldIndex = prev.findIndex(deck => deck.id === active.id);
-            const newIndex = prev.findIndex(deck => deck.id === over!.id);
-
-            const newDecks = arrayMove(prev, oldIndex, newIndex);
-            return newDecks;
-        });
-    }
-
-    function handleDragCancel() {
-        setActiveId(null);
-    }
- 
     return {
         decks,
         handleDragEnd,
