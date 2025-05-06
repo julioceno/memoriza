@@ -2,6 +2,7 @@ import React from "react";
 import { IModalProps } from "./types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useModal } from "./hooks";
+import { Button } from "../Button";
 
 export const Modal = ({
   isOpen,
@@ -22,13 +23,23 @@ export const Modal = ({
            onClick={handleBackdropClick}
          >
            <motion.div
-             className="flex flex-col items-center justify-center bg-white p-3 py-4 md:p-6 rounded-sm max-w-lg text-center"
+             className="flex flex-col items-center w-full bg-white p-3 py-4 md:p-6 rounded-sm max-w-lg text-center"
              initial={{ scale: 0.8, opacity: 0 }}
              animate={{ scale: 1, opacity: 1 }}
              exit={{ scale: 0.8, opacity: 0 }}
              transition={{ type: "spring", stiffness: 300, damping: 20 }}
            >
-            {children}
+            <div className="self-start">
+              {children}
+            </div>
+            <div className="flex w-8/12 items-center justify-center gap-2">
+              <Button type="outlined" size="medium" full>
+                  Fechar
+              </Button>
+              <Button full>
+                  Próximo
+              </Button>
+            </div>
            </motion.div>
          </motion.div>
        )}
