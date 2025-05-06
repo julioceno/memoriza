@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pencil, GripVertical, Trash2 } from "lucide-react";
-import DeleteDialog from "@/components/DeleteDialog";
 import { IActionsProps } from "./types";
 import { useSortable } from "@dnd-kit/sortable";
 
-export const Actions: React.FC<IActionsProps> = ({ id, onEdit }) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const handleDelete = () => {
-    setIsDialogOpen(false);
-  };
-
+export const Actions: React.FC<IActionsProps> = ({ id, onEdit, onDelete }) => {
   const { listeners } = useSortable({ id });
 
   return (
@@ -23,7 +17,7 @@ export const Actions: React.FC<IActionsProps> = ({ id, onEdit }) => {
         </button>
         <button
           className="text-gray-500 hover:text-gray-900 cursor-pointer"
-          onClick={() => setIsDialogOpen(true)}
+          onClick={onDelete}
         >
           <Trash2 className="w-5 h-5" />
         </button>
@@ -31,11 +25,6 @@ export const Actions: React.FC<IActionsProps> = ({ id, onEdit }) => {
           <GripVertical className="w-5 h-5" />
         </button>
       </div>
-      <DeleteDialog
-        isOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(false)}
-        onConfirm={handleDelete}
-      />
     </>
   );
 };
