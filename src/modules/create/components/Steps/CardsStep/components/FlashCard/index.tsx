@@ -1,5 +1,5 @@
+import { Actions } from "@/components/Actions";
 import React from "react";
-import { Actions } from "./components";
 
 export const FlashCard: React.FC<IFlashCardProps> = ({ id, title, answer }) => {
   return (

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Pencil, GripVertical, Trash2 } from "lucide-react";
 import DeleteDialog from "@/components/DeleteDialog";
-import { IDeckActionsProps } from "./types";
+import { IActionsProps } from "./types";
 import { useSortable } from "@dnd-kit/sortable";
 
-export const Actions: React.FC<IDeckActionsProps> = ({ id }) => {
+export const Actions: React.FC<IActionsProps> = ({ id }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const handleDelete = () => {
     setIsDialogOpen(false);

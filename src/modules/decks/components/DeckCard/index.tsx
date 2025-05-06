@@ -1,7 +1,7 @@
 import React from "react";
 import { Briefcase, NotebookText } from "lucide-react";
-import Actions from "./components/Actions";
 import StatusBadge from "./components/StatusBadge";
+import { Actions } from "@/components/Actions";
 
 export const DeckCard: React.FC<IDeckCardProps> = ({ id, title, cardCount, statusBadgeType }) => {
   return (
