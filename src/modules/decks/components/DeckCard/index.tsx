@@ -16,7 +16,7 @@ export const DeckCard: React.FC<IDeckCardProps> = ({ id, title, cardCount, statu
         </div>
       </div>
       <div className="flex-start w-full">
-        <h3 className="text-gray-800 font-bold text-lg">{title}</h3>
+        <h3 className="text-gray-800 font-bold text-lg truncate">{title}</h3>
         <div className="flex gap-1 text-slate-400 items-center">
           <NotebookText className="w-4 h-4" strokeWidth={1.8}/>
           <p className="text-sm">{cardCount} cards</p>
