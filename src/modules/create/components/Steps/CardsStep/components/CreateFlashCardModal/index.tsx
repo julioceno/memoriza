@@ -13,16 +13,22 @@ export function CreateFlashCardModal({
             <h2 className="text-black font-bold text-start text-lg">Criar novo flash card</h2>
             <p className="text-black text-start text-base">É interessante que o flash card tenha perguntas e respostas claras, para que facilite os seus estudos :)</p>
 
-            <Input 
-                value="" 
-                placeholder="Insira sua pergunta" 
-                onChange={() => {}} 
-            />
-            <Input 
-                value=" Insirua sua resposta Insirua sua resposta Insirua sua resposta Insirua sua resposta Insirua sua resposta" 
-                placeholder="Insirua sua resposta" 
-                onChange={() => {}} 
-            />
+            <div className="flex flex-col gap-2 mt-3">
+                <Input
+                    value=""
+                    placeholder="Insira sua pergunta"
+                    onChange={() => { }}
+                    textarea
+                    rows={4}
+                />
+                <Input
+                    value=""
+                    placeholder="Insirua sua resposta"
+                    onChange={() => { }}
+                    textarea
+                    rows={4}
+                />
+            </div>
         </Modal>
     )
 }

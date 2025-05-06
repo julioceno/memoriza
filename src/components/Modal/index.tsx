@@ -23,16 +23,16 @@ export const Modal = ({
            onClick={handleBackdropClick}
          >
            <motion.div
-             className="flex flex-col items-center w-full bg-white p-3 py-4 md:p-6 rounded-sm max-w-lg text-center"
-             initial={{ scale: 0.8, opacity: 0 }}
-             animate={{ scale: 1, opacity: 1 }}
-             exit={{ scale: 0.8, opacity: 0 }}
+             className="flex flex-col items-center w-full bg-white p-3 py-4 md:p-6 rounded-xl max-w-lg text-center gap-3"
+             initial={{ y: "-100%" }}
+             animate={{ y: 0 }}
+             exit={{ y: "-100%" }}
              transition={{ type: "spring", stiffness: 300, damping: 20 }}
            >
             <div className="self-start">
               {children}
             </div>
-            <div className="flex w-8/12 items-center justify-center gap-2">
+            <div className="flex w-full items-center justify-center gap-2">
               <Button type="outlined" size="medium" full>
                   Fechar
               </Button>

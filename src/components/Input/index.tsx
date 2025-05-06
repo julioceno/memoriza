@@ -24,7 +24,8 @@ export const Input: React.FC<IInputProps> = ({
   size = "small",
   onChange,
   full = false,
-  textarea = false
+  textarea = false,
+  rows,
 }) => {
   const [focus, setFocus] = useState(false);
 
@@ -65,6 +66,7 @@ export const Input: React.FC<IInputProps> = ({
           placeholder={placeholder}
           onChange={onChange}
           className={defaultStyle}
+          rows={rows}
         />
       ) : (
         <input
