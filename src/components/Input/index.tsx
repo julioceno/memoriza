@@ -23,7 +23,8 @@ export const Input: React.FC<IInputProps> = ({
   placeholder,
   size = "small",
   onChange,
-  full = false
+  full = false,
+  textarea = false
 }) => {
   const [focus, setFocus] = useState(false);
 
@@ -49,21 +50,33 @@ export const Input: React.FC<IInputProps> = ({
   };
 
   const width = full ? 'w-full' : '';
+  
+  const defaultStyle = `flex-grow bg-transparent outline-none ${getPlaceholderColor()}`
 
   return (
     <div
       className={`flex items-center gap-2 border ${width} ${getStatusStyles()} ${sizeStyles[size]} transition`}
     >
-      <input
-        type="text"
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        className={`flex-grow bg-transparent outline-none ${getPlaceholderColor()}`}
-
-      />
+      {textarea ? (
+        <textarea
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          className={defaultStyle}
+        />
+      ) : (
+        <input
+          type="text"
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          className={defaultStyle}
+        />
+      )}
     </div>
   );
 };

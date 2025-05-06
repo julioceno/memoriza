@@ -3,5 +3,6 @@ interface IInputProps {
   placeholder: string;
   size?: "small" | "medium" | "large"; 
   full?: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  textarea?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
