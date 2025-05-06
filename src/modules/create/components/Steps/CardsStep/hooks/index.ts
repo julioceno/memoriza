@@ -1,4 +1,5 @@
 import { useSortableList } from "@/hooks";
+import { useState } from "react";
 
 export function useCardStep() {
     const {
@@ -44,6 +45,17 @@ export function useCardStep() {
         { id: "31", title: "Em que ano terminou a Segunda Guerra Mundial?", answer: "1945" }
     ]);
 
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const handleModalOpen = () => {
+        setIsModalOpen(true)
+    }
+
+    const handleModalClose = () => {
+        setIsModalOpen(false)
+    }
+
+
     return {
         cards,
         handleDragEnd,
@@ -52,6 +64,10 @@ export function useCardStep() {
         activeCard,
         sensors,
         sortableStrategy,
-        cardsIds
+        cardsIds,
+
+        isModalOpen,
+        handleModalOpen,
+        handleModalClose
     }
 }

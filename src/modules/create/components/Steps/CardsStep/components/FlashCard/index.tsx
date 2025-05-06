@@ -1,22 +1,12 @@
 import { Actions } from "@/components/Actions";
-import React, { useState } from "react";
-import { CreateFlashCardModal } from "../CreateFlashCardModal";
+import React from "react";
 
 export const FlashCard: React.FC<IFlashCardProps> = ({ id, title, answer }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const handleModalOpen = () => {
-    setIsModalOpen(true)
-  }
-
-  const handleModalClose = () => {
-    setIsModalOpen(false)
-  }
 
   return (
     <div className="flex flex-col p-4 min-h-24 bg-white items-end sm:w-sm rounded-lg shadow-md hover:shadow-lg transition">
       <Actions 
-        onEdit={handleModalOpen}
+        onEdit={() => {}}
         onDelete={() => {}}
         id={id} 
       />
@@ -24,11 +14,6 @@ export const FlashCard: React.FC<IFlashCardProps> = ({ id, title, answer }) => {
         <h3 className="text-gray-800 font-bold text-sm sm:text-lg truncate">{title}</h3>
         <h3 className="text-gray-400 text-xs sm:text-md truncate">{answer}</h3>
       </div>
-
-      <CreateFlashCardModal 
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-      />
     </div>
   );
 };

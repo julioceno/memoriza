@@ -11,16 +11,16 @@ export const StepperControls: React.FC<IStepperControlsProps> = ({
     return (
         <div className="flex gap-3 w-full max-w-md md:max-w-xl">
             {isPrevVisible && (
-                <Button 
-                    full 
-                    type="outlined" 
+                <Button
+                    full
+                    type="outlined"
                     onClick={prevStep}
                 >
                     Voltar
                 </Button>
             )}
-            <Button 
-                full 
+            <Button
+                full
                 onClick={nextStep}
                 disabled={isNextDisabled}
             >

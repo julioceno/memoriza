@@ -5,6 +5,7 @@ import { restrictToFirstScrollableAncestor, restrictToParentElement } from "@dnd
 import { closestCenter, DndContext, DragOverlay } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { StepperControls } from "../../StepperControls";
+import { CreateFlashCardModal } from "./components/CreateFlashCardModal";
 
 export const CardsStep: React.FC = () => {
     const {
@@ -15,7 +16,11 @@ export const CardsStep: React.FC = () => {
         cards,
         sortableStrategy,
         activeCard,
-        cardsIds
+        cardsIds,
+
+        isModalOpen,
+        handleModalClose,
+        handleModalOpen
     } = useCardStep()
 
     return (
@@ -25,7 +30,7 @@ export const CardsStep: React.FC = () => {
                 </SectionTitle>
                 <div className="flex flex-col items-center justify-center gap-4">
                     <div className="self-start sm:w-full">
-                        <Button shape="square">
+                        <Button shape="square" onClick={handleModalOpen}>
                             Criar Flash Card
                         </Button>
                     </div>
@@ -63,6 +68,10 @@ export const CardsStep: React.FC = () => {
                     </DndContext>
                     <StepperControls isNextDisabled/>
                 </div>
+                <CreateFlashCardModal 
+                    isOpen={isModalOpen}
+                    onClose={handleModalClose}
+                />
             </div>
     );
 };
