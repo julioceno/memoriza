@@ -4,7 +4,7 @@ import DeleteDialog from "@/components/DeleteDialog";
 import { IActionsProps } from "./types";
 import { useSortable } from "@dnd-kit/sortable";
 
-export const Actions: React.FC<IActionsProps> = ({ id }) => {
+export const Actions: React.FC<IActionsProps> = ({ id, onEdit }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const handleDelete = () => {
     setIsDialogOpen(false);
@@ -15,7 +15,10 @@ export const Actions: React.FC<IActionsProps> = ({ id }) => {
   return (
     <>
       <div className="flex items-center gap-1.5 sm:gap-2">
-        <button className="text-gray-500 hover:text-gray-900 cursor-pointer">
+        <button 
+          className="text-gray-500 hover:text-gray-900 cursor-pointer"
+          onClick={onEdit}
+        >
           <Pencil className="w-5 h-5" />
         </button>
         <button

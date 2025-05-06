@@ -37,7 +37,7 @@ export default function LandingPage() {
           transition={{ type: "spring", stiffness: 300 }}
           onClick={handleButtonClick}
         >
-          <ArrowRight className="absolute left-4 w-5 h-5" strokeWidth={3} />
+          <ArrowRight className="absolute left-4 w-4 sm:w-5 h-4 sm:h-5" strokeWidth={3} />
           <span className="mx-auto font-bold text-xs sm:text-sm">Vamos começar</span>
         </motion.button>
       </motion.div>
