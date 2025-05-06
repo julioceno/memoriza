@@ -9,7 +9,7 @@ export const StepperControls: React.FC<IStepperControlsProps> = ({
     const { nextStep, prevStep } = useStepper();
 
     return (
-        <div className="flex gap-3 w-full">
+        <div className="flex gap-3 w-full max-w-md md:max-w-xl">
             {isPrevVisible && (
                 <Button 
                     full 

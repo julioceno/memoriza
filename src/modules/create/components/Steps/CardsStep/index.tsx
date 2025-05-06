@@ -4,6 +4,7 @@ import { useCardStep } from "./hooks";
 import { restrictToFirstScrollableAncestor, restrictToParentElement } from "@dnd-kit/modifiers";
 import { closestCenter, DndContext, DragOverlay } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
+import { StepperControls } from "../../StepperControls";
 
 export const CardsStep: React.FC = () => {
     const {
@@ -41,7 +42,7 @@ export const CardsStep: React.FC = () => {
                             items={cardsIds}
                             strategy={sortableStrategy}
                         >
-                            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-1 w-full lg:grid-cols-2 xl:grid-cols-3 gap-4">
                                 {cards.map((card) => {
                                     return (
                                         <SortableItem key={card.id} id={card.id}>
@@ -60,7 +61,7 @@ export const CardsStep: React.FC = () => {
                             ) : null}
                         </DragOverlay>
                     </DndContext>
-
+                    <StepperControls isNextDisabled/>
                 </div>
             </div>
         </div>
