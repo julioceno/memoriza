@@ -29,54 +29,43 @@ export const Input: React.FC<IInputProps> = ({
 }) => {
   const [focus, setFocus] = useState(false);
 
-  const getStatusStyles = () => {
-    if (focus) {
-      return statusStyles.filling;
-    }
+  const isFilled = value.length > 0;
 
-    const isFilled = value.length > 0;
-    if (isFilled) {
-      return statusStyles.filled;
-    }
+  const getStatusStyles = () =>
+    focus ? statusStyles.filling : isFilled ? statusStyles.filled : statusStyles.empty;
 
-    return statusStyles.empty;
-  }
+  const getPlaceholderColor = () =>
+    focus ? placeholderColors.focus : isFilled ? placeholderColors.filled : placeholderColors.empty;
 
-  const getPlaceholderColor = () => {
-    if (focus) {
-      return placeholderColors.focus;
-    }
+  const widthClass = full ? "w-full" : "";
+  const baseInputStyle = `flex-grow bg-transparent outline-none ${getPlaceholderColor()}`;
 
-    return value.length > 0 ? placeholderColors.filled : placeholderColors.empty;
-  };
-
-  const width = full ? 'w-full' : '';
-  
-  const defaultStyle = `flex-grow bg-transparent outline-none ${getPlaceholderColor()}`
+  const handleFocus = () => setFocus(true);
+  const handleBlur = () => setFocus(false);
 
   return (
     <div
-      className={`flex items-center gap-2 border ${width} ${getStatusStyles()} ${sizeStyles[size]} transition`}
+      className={`flex items-center gap-2 border ${widthClass} ${getStatusStyles()} ${sizeStyles[size]} transition`}
     >
       {textarea ? (
         <textarea
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           value={value}
           placeholder={placeholder}
           onChange={onChange}
-          className={defaultStyle}
+          className={baseInputStyle}
           rows={rows}
         />
       ) : (
         <input
           type="text"
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           value={value}
           placeholder={placeholder}
           onChange={onChange}
-          className={defaultStyle}
+          className={baseInputStyle}
         />
       )}
     </div>
