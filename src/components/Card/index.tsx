@@ -9,11 +9,11 @@ export const Card: React.FC<ICardProps> = ({ frontContent, backContent }) => {
 
   return (
     <div
-      className="relative w-80 h-48 cursor-pointer perspective"
+      className="relative w-68 xs:w-6/12 xl:w-3/12 h-52 cursor-pointer perspective-origin-right"
       onClick={handleFlip}
     >
       <motion.div
-        className={`absolute w-full h-full rounded-lg shadow-lg transform` }
+        className="absolute w-full h-full rounded-lg shadow-lg transform text-center"
         style={{
           transformStyle: "preserve-3d",
         }}
@@ -23,18 +23,18 @@ export const Card: React.FC<ICardProps> = ({ frontContent, backContent }) => {
         <div
           className="absolute w-full h-full bg-white flex flex-col items-center justify-center rounded-lg"
         >
-          <p>{frontContent}</p>
-          Clique para ver o cartão
+          <p className="absolute top-1/2 transform -translate-y-1/2 text-sm px-2">{frontContent}</p>
+          <p className="absolute bottom-4 text-xs font-semibold">Clique para ver o cartão</p>
         </div>
 
         <div
-          className="absolute w-full h-full bg-red-100 flex items-center justify-center rounded-lg"
+          className="absolute w-full h-full bg-red-50 flex items-center justify-center rounded-lg"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
           }}
         >
-          <p>{backContent}</p>
+          <p className="absolute top-1/2 transform -translate-y-1/2 text-sm px-2">{backContent}</p>
         </div>
       </motion.div>
     </div>
