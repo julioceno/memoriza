@@ -1,11 +1,13 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useBottomSheet } from "./hooks";
+import { Button } from "../Button";
 
 export const BottomSheet: React.FC<IBottomSheetProps> = ({
   isOpen,
   onClose,
-  children
+  children,
+  actionButtonText
 }) => {
   const {
     handleBackdropClick
@@ -19,15 +21,15 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           onClick={handleBackdropClick}
         >
           <motion.div
-            className="w-full bg-white rounded-t-3xl p-4 shadow-lg"
+            className="w-full bg-white rounded-t-3xl h-8/12 p-4 shadow-lg"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
-            transition={{ duration: 0.15 }}
+            transition={{ duration: 0.1 }}
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
             onDragEnd={(_, info) => {
@@ -40,6 +42,11 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
             <div className="overflow-y-auto mt-4">
               {children}
             </div>
+            {actionButtonText && (
+              <div className="h-full">
+                <Button full>{actionButtonText}</Button>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}
