@@ -28,14 +28,14 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="motion-div fixed inset-0 flex items-end bg-black/20 z-50"
+          className="fixed inset-0 flex items-end bg-black/20 z-50 will-change-transform"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={handleBackdropClick}
         >
           <motion.div
-            className="motion-div flex flex-col w-full bg-white rounded-t-3xl h-8/12 p-4 shadow-lg"
+            className="flex flex-col w-full bg-white rounded-t-3xl h-8/12 p-4 shadow-lg will-change-transform"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
