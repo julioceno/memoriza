@@ -35,3 +35,7 @@ body {
     #ff7fa6 100%
   );
 }
+
+.motion-div {
+  will-change: transform, opacity;
+}
