@@ -36,7 +36,7 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
           onClick={handleBackdropClick}
         >
           <motion.div
-            className="w-full bg-white rounded-t-3xl h-8/12 p-4 shadow-lg"
+            className="flex flex-col w-full bg-white rounded-t-3xl h-8/12 p-4 shadow-lg"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
@@ -54,7 +54,7 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
               {children}
             </div>
             {actionButtonText && (
-              <div className="h-full">
+              <div className="mt-auto">
                 <Button full>{actionButtonText}</Button>
               </div>
             )}
