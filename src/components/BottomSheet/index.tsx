@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useBottomSheet } from "./hooks";
 import { Button } from "../Button";
@@ -9,9 +9,20 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
   children,
   actionButtonText
 }) => {
-  const {
-    handleBackdropClick
-  } = useBottomSheet({ onClose })
+  const { handleBackdropClick } = useBottomSheet({ onClose });
+
+  useEffect(() => {
+    // TODO: mover essa lógica para um hook
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
     <AnimatePresence>
@@ -29,11 +40,11 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.15 }}
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
             onDragEnd={(_, info) => {
-              if (info.offset.y > 100) {
+              if (info.offset.y > 50) {
                 onClose();
               }
             }}
