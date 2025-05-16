@@ -41,7 +41,7 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
             exit={{ y: "100%" }}
             transition={{ duration: 0.2 }}
             drag="y"
-            dragElastic={.03}
+            dragElastic={0}
             dragConstraints={{ top: 0 }}
             onDragEnd={(_, info) => {
               if (info.offset.y > 50) {
@@ -50,7 +50,9 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
             }}
           >
             <div className="mt-1 w-12 h-1 bg-gray-700 mx-auto rounded cursor-pointer"></div>
-            <div className="mt-4">
+            <div className="overflow-y-scroll mt-4">
+              {children}
+              {children}
               {children}
             </div>
             {actionButtonText && (
