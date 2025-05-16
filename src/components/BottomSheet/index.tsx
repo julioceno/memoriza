@@ -39,7 +39,7 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.2 }}
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
             onDragEnd={(_, info) => {
