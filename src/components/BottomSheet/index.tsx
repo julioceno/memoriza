@@ -41,7 +41,8 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
             exit={{ y: "100%" }}
             transition={{ duration: 0.2 }}
             drag="y"
-            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={.03}
+            dragConstraints={{ top: 0 }}
             onDragEnd={(_, info) => {
               if (info.offset.y > 50) {
                 onClose();
