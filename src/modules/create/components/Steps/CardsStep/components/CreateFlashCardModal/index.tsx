@@ -1,7 +1,7 @@
 import { BottomSheet, Modal } from "@/components";
 import { ICreateFlashCardModal } from "./types";
 import { useIsMobile } from "@/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Content } from "./components";
 
 export function CreateFlashCardModal({
@@ -13,17 +13,19 @@ export function CreateFlashCardModal({
   const [question, setQuestion] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
 
-  function handleOnClose() {
-    setQuestion("");
-    setAnswer("");
-    onClose();
-  }
+
+  useEffect(() => {
+    if (isOpen) {
+      setQuestion("");
+      setAnswer("");
+    }
+  }, [isOpen]);
 
   if (isMobile) {
     return (
       <BottomSheet
         isOpen={isOpen}
-        onClose={handleOnClose}
+        onClose={onClose}
         actionButtonText="Criar flash card"
       >
         <Content
@@ -39,8 +41,9 @@ export function CreateFlashCardModal({
   return (
     <Modal
       isOpen={isOpen}
-      onClose={handleOnClose}
+      onClose={onClose}
       onPrimaryAction={() => onPrimaryAction({ question, answer })}
+      primaryButtonLabel="Criar Card"
     >
       <Content
         question={question}

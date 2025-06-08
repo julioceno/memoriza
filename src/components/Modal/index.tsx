@@ -8,7 +8,9 @@ export const Modal = ({
   isOpen,
   onClose,
   onPrimaryAction,
-  children
+  children,
+  closeButtonLabel = "Fechar",
+  primaryButtonLabel = "Próximo", 
 }: IModalProps) => {
   const { handleBackdropClick } = useModal({ onClose })
 
@@ -40,14 +42,14 @@ export const Modal = ({
                 full
                 onClick={onClose}
               >
-                  Fechar
+                {closeButtonLabel}
               </Button>
               <Button 
                 full
                 size="medium" 
                 onClick={onPrimaryAction}
               >
-                  Próximo
+                {primaryButtonLabel}
               </Button>
             </div>
            </motion.div>

@@ -47,7 +47,7 @@ export const CardsStep: React.FC = () => {
                             items={cardsIds}
                             strategy={sortableStrategy}
                         >
-                            <div className=" grid grid-cols-1 w-full lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-1 w-full lg:grid-cols-2 xl:grid-cols-3 gap-4">
                                 {cards.map((card) => {
                                     return (
                                         <SortableItem key={card.id} id={card.id}>
