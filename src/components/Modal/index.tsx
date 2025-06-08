@@ -7,6 +7,7 @@ import { Button } from "../Button";
 export const Modal = ({
   isOpen,
   onClose,
+  onPrimaryAction,
   children
 }: IModalProps) => {
   const { handleBackdropClick } = useModal({ onClose })
@@ -33,7 +34,12 @@ export const Modal = ({
               {children}
             </div>
             <div className="flex w-full items-center justify-center gap-2">
-              <Button type="outlined" size="medium" full>
+              <Button 
+                type="outlined" 
+                size="medium" 
+                full
+                onClick={onClose}
+              >
                   Fechar
               </Button>
               <Button full>
