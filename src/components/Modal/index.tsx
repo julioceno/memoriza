@@ -42,7 +42,11 @@ export const Modal = ({
               >
                   Fechar
               </Button>
-              <Button full>
+              <Button 
+                full
+                size="medium" 
+                onClick={onPrimaryAction}
+              >
                   Próximo
               </Button>
             </div>

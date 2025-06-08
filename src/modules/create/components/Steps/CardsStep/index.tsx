@@ -20,7 +20,8 @@ export const CardsStep: React.FC = () => {
 
         isModalOpen,
         handleModalClose,
-        handleModalOpen
+        handleModalOpen,
+        handleCreateFlashCard
     } = useCardStep()
 
     return (
@@ -71,6 +72,7 @@ export const CardsStep: React.FC = () => {
                 <CreateFlashCardModal 
                     isOpen={isModalOpen}
                     onClose={handleModalClose}
+                    onPrimaryAction={handleCreateFlashCard}
                 />
             </div>
     );

@@ -70,6 +70,10 @@ export function useSortableList<T extends IItem>(initialItems: T[]) {
     setActiveId(null);
   }
 
+  function handleAddItem(newItem: T) {
+    setItems((prev) => [...prev, newItem]);
+  }
+
   return {
     items,
     setItems,
@@ -77,6 +81,7 @@ export function useSortableList<T extends IItem>(initialItems: T[]) {
     handleDragStart,
     handleDragEnd,
     handleDragCancel,
+    handleAddItem,
     sensors,
     sortableStrategy,
     itemsIds

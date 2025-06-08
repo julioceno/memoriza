@@ -7,16 +7,23 @@ import { Content } from "./components";
 export function CreateFlashCardModal({
   isOpen,
   onClose,
+  onPrimaryAction
 }: ICreateFlashCardModal) {
   const isMobile = useIsMobile();
   const [question, setQuestion] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
 
+  function handleOnClose() {
+    setQuestion("");
+    setAnswer("");
+    onClose();
+  }
+
   if (isMobile) {
     return (
       <BottomSheet
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={handleOnClose}
         actionButtonText="Criar flash card"
       >
         <Content
@@ -32,8 +39,8 @@ export function CreateFlashCardModal({
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
-      onPrimaryAction={() => { }}
+      onClose={handleOnClose}
+      onPrimaryAction={() => onPrimaryAction({ question, answer })}
     >
       <Content
         question={question}
