@@ -3,6 +3,7 @@ export interface IModalProps {
   isOpen: boolean;
   closeButtonLabel?: string;
   primaryButtonLabel?: string;
+  isPrimaryButtonDisabled?: boolean,
   onClose: () => void;
   onPrimaryAction: () => void;
 }

@@ -1,7 +1,7 @@
 import { BottomSheet, Modal } from "@/components";
 import { ICreateFlashCardModal } from "./types";
 import { useIsMobile } from "@/hooks";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Content } from "./components";
 
 export function CreateFlashCardModal({
@@ -13,6 +13,9 @@ export function CreateFlashCardModal({
   const [question, setQuestion] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
 
+  const isPrimaryButtonDisabled = useMemo(() => {
+    return !question.trim() || !answer.trim();
+  }, [question, answer]);
 
   useEffect(() => {
     if (isOpen) {
@@ -44,6 +47,7 @@ export function CreateFlashCardModal({
       onClose={onClose}
       onPrimaryAction={() => onPrimaryAction({ question, answer })}
       primaryButtonLabel="Criar Card"
+      isPrimaryButtonDisabled={isPrimaryButtonDisabled}
     >
       <Content
         question={question}

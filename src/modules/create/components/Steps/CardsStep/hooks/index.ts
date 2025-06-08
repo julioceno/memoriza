@@ -1,5 +1,5 @@
 import { useSortableList } from "@/hooks";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 interface ICard {
     id: string;
@@ -21,6 +21,9 @@ export function useCardStep() {
     } = useSortableList<ICard>([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const disablePrimaryButton = useMemo(() => {
+        return cards.length === 0;
+    }, [cards.length]);
 
     const handleModalOpen = () => {
         setIsModalOpen(true)
@@ -49,6 +52,7 @@ export function useCardStep() {
         sensors,
         sortableStrategy,
         cardsIds,
+        disablePrimaryButton,
 
         isModalOpen,
         handleModalOpen,

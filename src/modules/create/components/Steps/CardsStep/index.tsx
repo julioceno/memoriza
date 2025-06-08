@@ -17,6 +17,7 @@ export const CardsStep: React.FC = () => {
         sortableStrategy,
         activeCard,
         cardsIds,
+        disablePrimaryButton,
 
         isModalOpen,
         handleModalClose,
@@ -67,7 +68,7 @@ export const CardsStep: React.FC = () => {
                             ) : null}
                         </DragOverlay>
                     </DndContext>
-                    <StepperControls isNextDisabled/>
+                    <StepperControls isNextDisabled={disablePrimaryButton}/>
                 </div>
                 <CreateFlashCardModal 
                     isOpen={isModalOpen}
