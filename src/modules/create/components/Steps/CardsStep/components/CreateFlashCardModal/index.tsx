@@ -1,45 +1,31 @@
 import { BottomSheet, Modal } from "@/components";
 import { ICreateFlashCardModal } from "./types";
-import { useIsMobile } from "@/hooks";
-import { useEffect, useMemo, useState } from "react";
 import { Content } from "./components";
+import { useCreateFlashCardModal } from "./hooks";
 
-export function CreateFlashCardModal({
-  isOpen,
-  onClose,
-  onPrimaryAction,
-
-  initialQuestion = "",
-  initialAnswer = "",
-  activeId
-}: ICreateFlashCardModal) {
-  const isMobile = useIsMobile();
-  const [question, setQuestion] = useState<string>("");
-  const [answer, setAnswer] = useState<string>("");
-
-  const isPrimaryButtonDisabled = useMemo(() => {
-    return !question.trim() || !answer.trim();
-  }, [question, answer]);
-
-  useEffect(() => {
-    if (isOpen) {
-      setQuestion(initialQuestion);
-      setAnswer(initialAnswer);
-    }
-  }, [isOpen]);
+export function CreateFlashCardModal(params: ICreateFlashCardModal) {
+  const { isOpen, onClose, onPrimaryAction, activeId } = params;
+  const {
+    isMobile,
+    question,
+    answer,
+    isPrimaryButtonDisabled,
+    handleAnswerChange,
+    handleQuestionChange
+  } = useCreateFlashCardModal(params);
 
   if (isMobile) {
     return (
       <BottomSheet
-        isOpen={isOpen}
+        isOpen={params.isOpen}
         onClose={onClose}
         actionButtonText="Criar flash card"
       >
         <Content
           question={question}
           answer={answer}
-          handleQuestionChange={(e) => setQuestion(e.target.value)}
-          handleAnswerChange={(e) => setAnswer(e.target.value)}
+          handleQuestionChange={handleQuestionChange}
+          handleAnswerChange={handleAnswerChange}
         />
       </BottomSheet>
     );
@@ -56,8 +42,8 @@ export function CreateFlashCardModal({
       <Content
         question={question}
         answer={answer}
-        handleQuestionChange={(e) => setQuestion(e.target.value)}
-        handleAnswerChange={(e) => setAnswer(e.target.value)}
+        handleQuestionChange={handleQuestionChange}
+        handleAnswerChange={handleAnswerChange}
       />
     </Modal>
   );
