@@ -1,12 +1,18 @@
 import { Actions } from "@/components/Actions";
 import React from "react";
 
-export const FlashCard: React.FC<IFlashCardProps> = ({ id, title, answer }) => {
+export const FlashCard: React.FC<IFlashCardProps> = ({ 
+  id, 
+  title, 
+  answer,
+
+  onEdit
+}) => {
 
   return (
     <div className="flex flex-col p-4 min-h-24 bg-white items-end sm:w-sm rounded-lg shadow-md hover:shadow-lg transition">
       <Actions 
-        onEdit={() => {}}
+        onEdit={onEdit}
         onDelete={() => {}}
         id={id} 
       />

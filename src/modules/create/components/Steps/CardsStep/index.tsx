@@ -22,7 +22,11 @@ export const CardsStep: React.FC = () => {
         isModalOpen,
         handleModalClose,
         handleModalOpen,
-        handleCreateFlashCard
+        handleCreateOrEditFlashCard,
+
+        activeId,
+        initialAnswer,
+        initialQuestion
     } = useCardStep()
 
     return (
@@ -52,7 +56,12 @@ export const CardsStep: React.FC = () => {
                                 {cards.map((card) => {
                                     return (
                                         <SortableItem key={card.id} id={card.id}>
-                                            <FlashCard title={card.title} id={card.id} answer={card.answer} />
+                                            <FlashCard 
+                                                title={card.title} 
+                                                id={card.id} 
+                                                answer={card.answer} 
+                                                onEdit={() => handleModalOpen({ id: card.id })}
+                                            />
                                         </SortableItem>
                                     )
                                 })}
@@ -64,6 +73,7 @@ export const CardsStep: React.FC = () => {
                                     id={activeCard.id}
                                     title={activeCard.title}
                                     answer={activeCard.answer}
+                                    onEdit={() => null}
                                 />
                             ) : null}
                         </DragOverlay>
@@ -73,7 +83,10 @@ export const CardsStep: React.FC = () => {
                 <CreateFlashCardModal 
                     isOpen={isModalOpen}
                     onClose={handleModalClose}
-                    onPrimaryAction={handleCreateFlashCard}
+                    onPrimaryAction={handleCreateOrEditFlashCard}
+                    initialAnswer={initialAnswer}
+                    initialQuestion={initialQuestion}
+                    activeId={activeId}
                 />
             </div>
     );

@@ -74,6 +74,12 @@ export function useSortableList<T extends IItem>(initialItems: T[]) {
     setItems((prev) => [...prev, newItem]);
   }
 
+  function handleEditItem(id: string, updatedItem: Partial<T>) {
+    setItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, ...updatedItem } : item))
+    );
+  }
+
   return {
     items,
     setItems,
@@ -84,6 +90,7 @@ export function useSortableList<T extends IItem>(initialItems: T[]) {
     handleAddItem,
     sensors,
     sortableStrategy,
+    handleEditItem,
     itemsIds
   };
 }
