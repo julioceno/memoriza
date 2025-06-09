@@ -2,18 +2,18 @@ import { useIsMobile } from "@/hooks";
 import { useEffect, useMemo, useState } from "react";
 import { ICreateFlashCardModal } from "../types";
 
-interface IUseCreateFlashCardModalParams 
-    extends Pick<
-    ICreateFlashCardModal, 
-    | "isOpen" 
-    | "initialQuestion" 
-    | "initialAnswer"> {}
+type IUseCreateFlashCardModalType =
+  Pick<
+    ICreateFlashCardModal,
+    | "isOpen"
+    | "initialQuestion"
+    | "initialAnswer">
 
 export function useCreateFlashCardModal({
-    isOpen,
-    initialQuestion = "",
-    initialAnswer = "",
-}: IUseCreateFlashCardModalParams) {
+  isOpen,
+  initialQuestion = "",
+  initialAnswer = "",
+}: IUseCreateFlashCardModalType) {
   const isMobile = useIsMobile();
   const [question, setQuestion] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
