@@ -17,6 +17,7 @@ import {
 import { useMemo, useState } from "react";
 import { IItem } from "./types";
 
+// TODO: padronizar todas as funções desse hook para serem arrow functions
 export function useSortableList<T extends IItem>(initialItems: T[]) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [items, setItems] = useState<T[]>(initialItems);
@@ -79,18 +80,25 @@ export function useSortableList<T extends IItem>(initialItems: T[]) {
       prev.map((item) => (item.id === id ? { ...item, ...updatedItem } : item))
     );
   }
+  
+  function handleDeleteItem(id: string) {
+    setItems((prev) => prev.filter((item) => item.id !== id));
+  }
 
   return {
     items,
     setItems,
     activeItem,
+    itemsIds,
+    
+    sensors,
+    sortableStrategy,
+
     handleDragStart,
     handleDragEnd,
     handleDragCancel,
     handleAddItem,
-    sensors,
-    sortableStrategy,
     handleEditItem,
-    itemsIds
+    handleDeleteItem
   };
 }

@@ -4,4 +4,5 @@ interface IFlashCardProps {
   answer: string;
 
   onEdit: () => void;
+  onDelete: () => void;
 }

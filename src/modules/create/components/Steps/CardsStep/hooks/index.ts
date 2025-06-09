@@ -23,7 +23,8 @@ export function useCardStep() {
         handleDragCancel,
         sensors,
         sortableStrategy,
-        handleEditItem
+        handleEditItem,
+        handleDeleteItem
     } = useSortableList<ICard>([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -72,6 +73,10 @@ export function useCardStep() {
         handleModalClose();
     };
 
+    const handleDeleteFlashCard = (id: string) => {
+        handleDeleteItem(id);
+    };
+
     return {
         cards,
         handleDragEnd,
@@ -87,7 +92,8 @@ export function useCardStep() {
         handleModalOpen,
         handleModalClose,
         handleCreateOrEditFlashCard,
-
+        handleDeleteFlashCard,
+        
         activeId,
         initialQuestion,
         initialAnswer

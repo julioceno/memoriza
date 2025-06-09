@@ -3,14 +3,16 @@ import { useToast } from '@/context/toast/toast';
 import { useCloseOnEscape } from '@/hooks/useCloseOnEscape';
 import { useMemo, useState } from 'react';
 
-export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
+export const useDeleteDialog = ({ onClose, onConfirm }: IUseDeleteDialog) => {
     const toast = useToast()
     const [value, setValue] = useState("");
 
     const handleDelete = () => {
         if (value.toLocaleLowerCase() === "confirmar") {
+            onConfirm()
             toast.show({
-                type: ToastEnum.ERROR,
+                type: ToastEnum.SUCCESS,
+                // TODO: tornar mensagem personalizável
                 message: "Deck deletado com sucesso!",
                 position: ToastPositionEnum.BOTTOM_RIGHT,
             })
@@ -25,12 +27,11 @@ export const useDeleteDialog = ({ onClose }: IUseDeleteDialog) => {
         }
     };
 
-    useCloseOnEscape(onClose);
-
     const disableButton = useMemo(() => {
         return value.toLocaleLowerCase() !== "confirmar";
-    }
-    , [value]);
+    }, [value]);
+
+    useCloseOnEscape(onClose);
 
     return {
         handleDelete,

@@ -23,6 +23,7 @@ export const CardsStep: React.FC = () => {
         handleModalClose,
         handleModalOpen,
         handleCreateOrEditFlashCard,
+        handleDeleteFlashCard,
 
         activeId,
         initialAnswer,
@@ -61,6 +62,7 @@ export const CardsStep: React.FC = () => {
                                                 id={card.id} 
                                                 answer={card.answer} 
                                                 onEdit={() => handleModalOpen({ id: card.id })}
+                                                onDelete={() => handleDeleteFlashCard(card.id)}
                                             />
                                         </SortableItem>
                                     )
@@ -74,6 +76,7 @@ export const CardsStep: React.FC = () => {
                                     title={activeCard.title}
                                     answer={activeCard.answer}
                                     onEdit={() => null}
+                                    onDelete={() => null}
                                 />
                             ) : null}
                         </DragOverlay>
