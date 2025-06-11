@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useBottomSheet } from "./hooks";
 import { Button } from "../Button";
@@ -6,7 +5,6 @@ import { Button } from "../Button";
 export const BottomSheet: React.FC<IBottomSheetProps> = (props) => {
   const { isOpen, onClose, actionButtonText, isPrimaryButtonDisabled, onPrimaryAction, children } = props;
   const { handleBackdropClick } = useBottomSheet(props);
-
 
   return (
     <AnimatePresence>
