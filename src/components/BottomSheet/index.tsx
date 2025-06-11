@@ -34,7 +34,7 @@ export const BottomSheet: React.FC<IBottomSheetProps> = (props) => {
             }}
           >
             <div className="mt-1 w-12 h-1 bg-gray-700 mx-auto rounded cursor-pointer"></div>
-            <div className=" overflow-y-scroll mt-4">
+            <div className="mt-4">
               {children}
             </div>
             {actionButtonText && (
