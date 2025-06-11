@@ -7,7 +7,7 @@ export const Content: React.FC<IContentProps> = ({ question, answer, handleQuest
       <h2 className="text-black font-bold text-start text-md md:text-md md:text-lg">Criar novo flash card</h2>
       <p className="text-black text-start text-sm md:text-base">É interessante que o flash card tenha perguntas e respostas claras, para que facilite os seus estudos :)</p>
 
-      <div className="flex flex-col gap-2 mt-3 h-full">
+      <div className="flex flex-col gap-2 mt-3">
         <Input
           value={question}
           placeholder="Pergunta"

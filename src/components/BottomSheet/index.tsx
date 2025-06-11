@@ -3,26 +3,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useBottomSheet } from "./hooks";
 import { Button } from "../Button";
 
-export const BottomSheet: React.FC<IBottomSheetProps> = ({
-  isOpen,
-  onClose,
-  children,
-  actionButtonText
-}) => {
-  const { handleBackdropClick } = useBottomSheet({ onClose });
+export const BottomSheet: React.FC<IBottomSheetProps> = (props) => {
+  const { isOpen, onClose, actionButtonText, isPrimaryButtonDisabled, onPrimaryAction, children } = props;
+  const { handleBackdropClick } = useBottomSheet(props);
 
-  useEffect(() => {
-    // TODO: mover essa lógica para um hook
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
 
   return (
     <AnimatePresence>
@@ -39,7 +23,7 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.1 }}
             drag="y"
             dragElastic={0}
             dragConstraints={{ top: 0 }}
@@ -50,12 +34,16 @@ export const BottomSheet: React.FC<IBottomSheetProps> = ({
             }}
           >
             <div className="mt-1 w-12 h-1 bg-gray-700 mx-auto rounded cursor-pointer"></div>
-            <div className="overflow-y-scroll mt-4">
+            <div className=" overflow-y-scroll mt-4">
               {children}
             </div>
             {actionButtonText && (
               <div className="mt-auto">
-                <Button full>{actionButtonText}</Button>
+                <Button 
+                  full
+                  disabled={isPrimaryButtonDisabled}
+                  onClick={onPrimaryAction}
+                >{actionButtonText}</Button>
               </div>
             )}
           </motion.div>

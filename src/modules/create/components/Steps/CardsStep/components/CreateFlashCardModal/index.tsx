@@ -4,14 +4,16 @@ import { Content } from "./components";
 import { useCreateFlashCardModal } from "./hooks";
 
 export function CreateFlashCardModal(params: ICreateFlashCardModal) {
-  const { isOpen, onClose, onPrimaryAction, activeId } = params;
+  const { isOpen, onClose } = params;
   const {
     isMobile,
     question,
     answer,
     isPrimaryButtonDisabled,
+    primaryButtonTitle,
     handleAnswerChange,
-    handleQuestionChange
+    handleQuestionChange,
+    handleOnClickPrimaryButton
   } = useCreateFlashCardModal(params);
 
   if (isMobile) {
@@ -19,7 +21,9 @@ export function CreateFlashCardModal(params: ICreateFlashCardModal) {
       <BottomSheet
         isOpen={params.isOpen}
         onClose={onClose}
-        actionButtonText="Criar flash card"
+        actionButtonText={primaryButtonTitle}
+        onPrimaryAction={handleOnClickPrimaryButton}
+        isPrimaryButtonDisabled={isPrimaryButtonDisabled}
       >
         <Content
           question={question}
@@ -35,8 +39,8 @@ export function CreateFlashCardModal(params: ICreateFlashCardModal) {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      onPrimaryAction={() => onPrimaryAction({ id: activeId, question, answer })}
-      primaryButtonLabel={activeId ? "Editar Flash Card" : "Criar Flash Card"}
+      onPrimaryAction={handleOnClickPrimaryButton}
+      primaryButtonLabel={primaryButtonTitle}
       isPrimaryButtonDisabled={isPrimaryButtonDisabled}
     >
       <Content

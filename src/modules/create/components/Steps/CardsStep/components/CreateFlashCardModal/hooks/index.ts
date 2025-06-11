@@ -2,18 +2,14 @@ import { useIsMobile } from "@/hooks";
 import { useEffect, useMemo, useState } from "react";
 import { ICreateFlashCardModal } from "../types";
 
-type IUseCreateFlashCardModalType =
-  Pick<
-    ICreateFlashCardModal,
-    | "isOpen"
-    | "initialQuestion"
-    | "initialAnswer">
-
 export function useCreateFlashCardModal({
   isOpen,
   initialQuestion = "",
   initialAnswer = "",
-}: IUseCreateFlashCardModalType) {
+  activeId,
+  onPrimaryAction,
+  onClose
+}: ICreateFlashCardModal) {
   const isMobile = useIsMobile();
   const [question, setQuestion] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
@@ -22,12 +18,21 @@ export function useCreateFlashCardModal({
     return !question.trim() || !answer.trim();
   }, [question, answer]);
 
+  const primaryButtonTitle = useMemo(() => {
+    return initialQuestion ? "Editar Flash Card" : "Criar Flash Card";
+  }, [initialQuestion]);
+
   function handleQuestionChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
     setQuestion(event.target.value);
   }
 
   function handleAnswerChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
     setAnswer(event.target.value);
+  }
+
+  function handleOnClickPrimaryButton() {
+    onPrimaryAction({ id: activeId, question, answer })
+    onClose();
   }
 
   useEffect(() => {
@@ -42,8 +47,10 @@ export function useCreateFlashCardModal({
     question,
     answer,
     isPrimaryButtonDisabled,
+    primaryButtonTitle,
 
     handleQuestionChange,
-    handleAnswerChange
+    handleAnswerChange,
+    handleOnClickPrimaryButton
   }
 }

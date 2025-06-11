@@ -69,8 +69,6 @@ export function useCardStep() {
                 answer: answer,
             });
         }
-        
-        handleModalClose();
     };
 
     const handleDeleteFlashCard = (id: string) => {
