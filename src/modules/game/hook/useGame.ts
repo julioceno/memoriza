@@ -29,6 +29,7 @@ export const useGame = () => {
     }, [currentCardIndex, flashcards]);
 
     const percentage = useMemo(() => {
+        if (currentCardIndex === 0) return 0;
         return Math.round(((currentCardIndex + 1) / totalCards) * 100);
     }, [currentCardIndex, totalCards]);
 

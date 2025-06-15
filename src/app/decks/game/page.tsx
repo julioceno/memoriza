@@ -28,7 +28,6 @@ const GamePage: React.FC = () => {
           frontContent={currentCard.title}
           backContent={currentCard.answer}
         />
-        <p className='text-black'>{percentage}</p>
       </div>
       <SectionTitle>
         Você acertou?
