@@ -27,7 +27,7 @@ export function useCardStep() {
         handleDeleteItem
     } = useSortableList<ICard>([]);
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(true);
     const [activeId, setActiveId] = useState<string>();
     const [initialQuestion, setInitialQuestion] = useState<string>("");
     const [initialAnswer, setInitialAnswer] = useState<string>("");

@@ -3,6 +3,7 @@ interface IBottomSheetProps {
   isOpen: boolean;
   actionButtonText: string;
   isPrimaryButtonDisabled: boolean;
+  isDisableClose?: boolean;
 
   onPrimaryAction: () => void;
   onClose: () => void;

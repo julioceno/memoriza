@@ -1,13 +1,22 @@
+import { PanInfo } from "framer-motion";
 import { useEffect } from "react";
 
 export const useBottomSheet = ({
     onClose,
+    isDisableClose,
     isOpen
 }: IBottomSheetProps) => {
     const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (e.target === e.currentTarget) {
-            onClose();
-        }
+      if (isDisableClose) return;
+      if (e.target !== e.currentTarget) return;
+      onClose();
+    };
+
+    const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+      if (isDisableClose) return;
+      if (info.offset.y < 50) return;
+
+      onClose();
     };
 
     useEffect(() => {
@@ -23,6 +32,7 @@ export const useBottomSheet = ({
       }, [isOpen]);
 
     return {
-        handleBackdropClick
+        handleBackdropClick,
+        handleDragEnd
     };
 }

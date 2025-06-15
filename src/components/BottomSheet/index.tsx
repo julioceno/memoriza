@@ -3,8 +3,18 @@ import { useBottomSheet } from "./hooks";
 import { Button } from "../Button";
 
 export const BottomSheet: React.FC<IBottomSheetProps> = (props) => {
-  const { isOpen, onClose, actionButtonText, isPrimaryButtonDisabled, onPrimaryAction, children } = props;
-  const { handleBackdropClick } = useBottomSheet(props);
+  const { 
+    isOpen, 
+    actionButtonText, 
+    isPrimaryButtonDisabled, 
+    onPrimaryAction, 
+    isDisableClose,
+    children 
+  } = props;
+  const { 
+    handleBackdropClick,
+    handleDragEnd
+  } = useBottomSheet(props);
 
   return (
     <AnimatePresence>
@@ -22,14 +32,10 @@ export const BottomSheet: React.FC<IBottomSheetProps> = (props) => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.1 }}
-            drag="y"
+            drag={isDisableClose ? false : "y"}
             dragElastic={0}
             dragConstraints={{ top: 0 }}
-            onDragEnd={(_, info) => {
-              if (info.offset.y > 50) {
-                onClose();
-              }
-            }}
+            onDragEnd={handleDragEnd}
           >
             <div className="mt-1 w-12 h-1 bg-gray-700 mx-auto rounded cursor-pointer"></div>
             <div className="mt-4">

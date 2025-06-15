@@ -24,6 +24,7 @@ export function CreateFlashCardModal(params: ICreateFlashCardModal) {
         actionButtonText={primaryButtonTitle}
         onPrimaryAction={handleOnClickPrimaryButton}
         isPrimaryButtonDisabled={isPrimaryButtonDisabled}
+        isDisableClose={true}
       >
         <Content
           question={question}

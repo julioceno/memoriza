@@ -25,7 +25,7 @@ export default function Deck() {
   return (
     <div className="mt-20 md:mt-40 flex flex-col items-center">
       <SectionTitle>
-        Aqui estão seus decks, vamos práticar!
+        Aqui estão seus decks, vamos praticar!
       </SectionTitle>
 
       <DndContext
