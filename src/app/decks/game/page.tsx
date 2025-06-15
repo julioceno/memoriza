@@ -4,6 +4,7 @@ import { SectionTitle } from '@/components';
 import { Card } from '@/components/Card';
 import { ProgressBar } from '@/components';
 import React from 'react';
+import { FeedbackCard } from '@/components/FeedbackCard';
 
 const GamePage: React.FC = () => {
   return (
@@ -19,6 +20,14 @@ const GamePage: React.FC = () => {
       <SectionTitle>
         Você acertou?
       </SectionTitle>
+      <div className='flex gap-4'>
+        <FeedbackCard
+          variant="like" 
+        />
+        <FeedbackCard 
+          variant="dislike" 
+        />
+      </div>
     </div>
   );
 };
