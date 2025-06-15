@@ -3,18 +3,25 @@
 import { SectionTitle } from '@/components';
 import { Card } from '@/components/Card';
 import { ProgressBar } from '@/components';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { FeedbackCard } from '@/components/FeedbackCard';
 
 const GamePage: React.FC = () => {
-  const [percentage, setPercentage] = useState(20);
+  const [currentStep, setCurrentStep] = useState(0);
+  const totalSteps = 3;
 
+  const percentage = useMemo(() => {
+    return Math.round((currentStep / totalSteps) * 100);
+  }, [currentStep, totalSteps])
+;
   const handleLeftClick = () => {
-    setPercentage(prev => Math.max(prev - 10, 0)); 
+    setCurrentStep(prev => {
+      return Math.max(prev - 1, 0)
+    }); 
   };
 
   const handleRightClick = () => {
-    setPercentage(prev => Math.min(prev + 10, 100));
+    setCurrentStep(prev => Math.min(prev + 1, totalSteps));
   };
 
   return (
