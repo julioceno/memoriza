@@ -1,10 +1,13 @@
+import { IModalProps } from "../types";
+
 export function useModal({
-    onClose
-}: IUseModal) {
+    onClose,
+    isDisableClose
+}: IModalProps) {
     const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (e.target === e.currentTarget) {
-            onClose();
-        }
+        if (isDisableClose) return;
+        if (e.target !== e.currentTarget) return;
+        onClose();
     };
 
     return {

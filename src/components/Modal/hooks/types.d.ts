@@ -1,3 +1,0 @@
-interface IUseModal {
-    onClose: () => void;
-}
