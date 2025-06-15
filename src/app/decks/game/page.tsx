@@ -33,8 +33,8 @@ const GamePage: React.FC = () => {
           onRightClick={handleRightClick}
         />
         <Card
-          frontContent="aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa " 
-          backContent="bbbb"
+          frontContent="que é polimorfismo na programação orientada a objetos?" 
+          backContent="É a capacidade de um objeto assumir muitas formas. Ou seja, diferentes classes podem implementar métodos com o mesmo nome, mas com comportamentos diferentes."
         />
       </div>
       <SectionTitle>
@@ -43,9 +43,11 @@ const GamePage: React.FC = () => {
       <div className='flex gap-4'>
         <FeedbackCard
           variant="like" 
+          onClick={handleRightClick}
         />
         <FeedbackCard 
           variant="dislike" 
+          onClick={handleRightClick}
         />
       </div>
     </div>

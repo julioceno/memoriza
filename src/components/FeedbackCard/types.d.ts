@@ -1,6 +1,6 @@
 
 interface IFeedbackCardProps {
   variant: "like" | "dislike";
-  onClick?: () => void;
+  onClick: () => void;
   disabled?: boolean;
 }
