@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const ProgressBar: React.FC<IProgressBarProps> = ({
   percentage,
@@ -7,6 +8,8 @@ export const ProgressBar: React.FC<IProgressBarProps> = ({
   const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
 
   return (
+    <div className="flex items-center text-black">
+      <ChevronLeft />
       <div className={`w-full h-4 border-gray-200 border-2 rounded-full overflow-hidden`}>
         <motion.div
           className={`h-3 bg-principal rounded-full`}
@@ -18,6 +21,8 @@ export const ProgressBar: React.FC<IProgressBarProps> = ({
           }}
         />
       </div>
+      <ChevronRight />
+    </div>
   );
 };
 

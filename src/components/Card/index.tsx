@@ -9,7 +9,7 @@ export const Card: React.FC<ICardProps> = ({ frontContent, backContent }) => {
 
   return (
     <div
-      className="relative w-68 xs:w-6/12 xl:w-3/12 h-52 text-black cursor-pointer perspective-origin-right"
+      className="relative w-full h-52 text-black cursor-pointer perspective-origin-right"
       onClick={handleFlip}
     >
       <motion.div

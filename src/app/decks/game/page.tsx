@@ -1,17 +1,22 @@
 'use client';
 
 import { Card } from '@/components/Card';
+import ProgressBar from '@/components/ProgressBar';
 import React from 'react';
 
 const GamePage: React.FC = () => {
-    return (
-        <div className='flex flex-col items-center'>
-          <Card 
-            frontContent="aaaa"
-            backContent="bbbb"
-          />
-        </div>
-    );
+  return (
+    <div className='flex flex-col items-center'>
+
+      <div className='w-68 xs:w-6/12 xl:w-3/12 h-52 flex flex-col gap-2'>
+        <ProgressBar percentage={20} />
+        <Card
+          frontContent="aaaa"
+          backContent="bbbb"
+        />
+      </div>
+    </div>
+  );
 };
 
 export default GamePage;
