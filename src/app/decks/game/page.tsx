@@ -3,26 +3,16 @@
 import { SectionTitle } from '@/components';
 import { Card } from '@/components/Card';
 import { ProgressBar } from '@/components';
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { FeedbackCard } from '@/components/FeedbackCard';
+import { useGame } from '@/modules/game';
 
 const GamePage: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const totalSteps = 3;
-
-  const percentage = useMemo(() => {
-    return Math.round((currentStep / totalSteps) * 100);
-  }, [currentStep, totalSteps])
-;
-  const handlePrevious = () => {
-    setCurrentStep(prev => {
-      return Math.max(prev - 1, 0)
-    }); 
-  };
-
-  const handleNext = () => {
-    setCurrentStep(prev => Math.min(prev + 1, totalSteps));
-  };
+  const {
+    percentage,
+    handlePrevious,
+    handleNext 
+  } = useGame();
 
   return (
     <div className='flex flex-col items-center gap-10 w-full mt-20'>
