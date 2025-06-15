@@ -5,12 +5,12 @@ import { ICardProps } from "./types";
 export const Card: React.FC<ICardProps> = ({ frontContent, backContent }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const handleFlip = () => setIsFlipped(!isFlipped);
+  const handleToggleFlip = () => setIsFlipped(!isFlipped);
 
   return (
     <div
       className="relative w-full h-52 text-black cursor-pointer perspective-origin-right"
-      onClick={handleFlip}
+      onClick={handleToggleFlip}
     >
       <motion.div
         className="absolute w-full h-full rounded-lg shadow-lg transform text-center"

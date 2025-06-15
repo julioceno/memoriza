@@ -11,6 +11,7 @@ export const ProgressBar: React.FC<IProgressBarProps> = ({
   const isLeftDisabled = clampedPercentage === 0;
   const isRightDisabled = clampedPercentage === 100;
 
+
   function handlePrevious() {
     if (isLeftDisabled) return;
     onPrevious();
@@ -37,7 +38,7 @@ export const ProgressBar: React.FC<IProgressBarProps> = ({
           initial={{ width: "0%" }}
           animate={{ width: `${clampedPercentage}%` }}
           transition={{
-            duration: .8,
+            duration: .4,
             ease: "backOut",
           }}
         />

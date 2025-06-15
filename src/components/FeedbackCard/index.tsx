@@ -15,10 +15,10 @@ export const FeedbackCard: React.FC<IFeedbackCardProps> = ({
     }
 
     if (isLike) {
-      return "bg-green-50 text-green-600 hover:bg-green-100";
+      return "bg-green-50 text-green-600 hover:bg-green-100 hover:text-green-700";
     }
 
-    return "bg-red-50 text-red-600 hover:bg-red-100";
+    return "bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700";
   }
 
   const Icon = isLike ? ThumbsUp : ThumbsDown;
