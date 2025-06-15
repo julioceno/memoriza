@@ -4,18 +4,34 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const ProgressBar: React.FC<IProgressBarProps> = ({
   percentage,
-  onLeftClick,
-  onRightClick,
+  onNext,
+  onPrevious
 }) => {
   const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
+  const isLeftDisabled = clampedPercentage === 0;
+  const isRightDisabled = clampedPercentage === 100;
+
+  function handlePrevious() {
+    if (isLeftDisabled) return;
+    onPrevious();
+  }
+  function handleNext() {
+    if (isRightDisabled) return;
+    onNext();
+  }
+
 
   return (
     <div className="flex items-center text-black">
       <ChevronLeft 
-        className="cursor-pointer hover:text-principal transition-colors"
-        onClick={onLeftClick}
+        className={`cursor-pointer transition-colors ${
+          isLeftDisabled 
+            ? 'text-gray-400 cursor-not-allowed' 
+            : 'hover:text-principal'
+        }`}
+        onClick={handlePrevious}
       />
-      <div className={`w-full h-4 border-gray-200 border-2 rounded-full overflow-hidden`}>
+      <div className={`w-full h-4 border-gray-300 border-2 rounded-full overflow-hidden`}>
         <motion.div
           className={`h-3 bg-principal rounded-full`}
           initial={{ width: "0%" }}
@@ -27,8 +43,12 @@ export const ProgressBar: React.FC<IProgressBarProps> = ({
         />
       </div>
       <ChevronRight 
-        className="cursor-pointer hover:text-principal transition-colors"
-        onClick={onRightClick}
+        className={`cursor-pointer transition-colors ${
+          isRightDisabled 
+            ? 'text-gray-400 cursor-not-allowed' 
+            : 'hover:text-principal'
+        }`}
+        onClick={handleNext}
       />
     </div>
   );

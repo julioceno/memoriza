@@ -1,5 +1,5 @@
 interface IProgressBarProps {
   percentage: number;
-  onLeftClick: () => void;
-  onRightClick: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
 }

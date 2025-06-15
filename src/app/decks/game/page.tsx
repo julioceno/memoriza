@@ -14,13 +14,13 @@ const GamePage: React.FC = () => {
     return Math.round((currentStep / totalSteps) * 100);
   }, [currentStep, totalSteps])
 ;
-  const handleLeftClick = () => {
+  const handlePrevious = () => {
     setCurrentStep(prev => {
       return Math.max(prev - 1, 0)
     }); 
   };
 
-  const handleRightClick = () => {
+  const handleNext = () => {
     setCurrentStep(prev => Math.min(prev + 1, totalSteps));
   };
 
@@ -29,8 +29,8 @@ const GamePage: React.FC = () => {
       <div className='w-68 sm:w-[350px] xl:w-[400px] h-52 flex flex-col gap-2'>
         <ProgressBar 
           percentage={percentage} 
-          onLeftClick={handleLeftClick}
-          onRightClick={handleRightClick}
+          onPrevious={handlePrevious}
+          onNext={handleNext}
         />
         <Card
           frontContent="que é polimorfismo na programação orientada a objetos?" 
@@ -43,11 +43,11 @@ const GamePage: React.FC = () => {
       <div className='flex gap-4'>
         <FeedbackCard
           variant="like" 
-          onClick={handleRightClick}
+          onClick={handleNext}
         />
         <FeedbackCard 
           variant="dislike" 
-          onClick={handleRightClick}
+          onClick={handleNext}
         />
       </div>
     </div>
