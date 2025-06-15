@@ -1,29 +1,69 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 
+// TODO: remover esse cara daqui
+interface IFlashCard {
+    id: string;
+    title: string;
+    answer: string;
+}
 
 export const useGame = () => {
-    const [currentStep, setCurrentStep] = useState(0);
-    const totalSteps = 3;
+    const flashcards: IFlashCard[] = [
+        { id: '1', title: 'O que é polimorfismo na programação orientada a objetos?', answer: 'É a capacidade de um objeto assumir muitas formas. Ou seja, diferentes classes podem implementar métodos com o mesmo nome, mas com comportamentos diferentes.' },
+        { id: '2', title: 'O que é encapsulamento?', answer: 'É o princípio de ocultar os detalhes internos de uma classe e expor apenas uma interface pública.' },
+        { id: '3', title: 'O que é herança?', answer: 'É o mecanismo que permite que uma classe herde características de outra classe.' },
+        { id: '4', title: 'O que é abstração?', answer: 'É o processo de simplificar objetos complexos, focando apenas nos aspectos relevantes.' },
+        { id: '5', title: 'O que é uma interface?', answer: 'É um contrato que define quais métodos uma classe deve implementar.' },
+        { id: '6', title: 'O que é sobrecarga de método?', answer: 'É a capacidade de definir múltiplos métodos com o mesmo nome, mas com diferentes parâmetros.' },
+        { id: '7', title: 'O que é sobrescrita de método?', answer: 'É a redefinição de um método herdado em uma classe filha.' },
+        { id: '8', title: 'O que é uma classe abstrata?', answer: 'É uma classe que não pode ser instanciada diretamente e geralmente contém métodos abstratos.' },
+        { id: '9', title: 'O que é composição?', answer: 'É uma relação onde uma classe é composta por objetos de outras classes.' },
+        { id: '10', title: 'O que é agregação?', answer: 'É uma relação onde uma classe contém referências a objetos de outras classes, mas não os possui exclusivamente.' }
+    ];
+
+    const [currentCardIndex, setCurrentCardIndex] = useState(0);
+    const totalCards = flashcards.length;
+
+    const currentCard = useMemo(() => {
+        return flashcards[currentCardIndex] || null;
+    }, [currentCardIndex, flashcards]);
 
     const percentage = useMemo(() => {
-        return Math.round((currentStep / totalSteps) * 100);
-    }, [currentStep, totalSteps])
-        ;
+        return Math.round(((currentCardIndex + 1) / totalCards) * 100);
+    }, [currentCardIndex, totalCards]);
+
+    const isFirstCard = useMemo(() => {
+        return currentCardIndex === 0;
+    }, [currentCardIndex]);
+
+    const isLastCard = useMemo(() => {
+        return currentCardIndex === totalCards - 1;
+    }, [currentCardIndex, totalCards]);
+
     const handlePrevious = () => {
-        setCurrentStep(prev => {
-            return Math.max(prev - 1, 0)
-        });
-    };
+        setCurrentCardIndex(prev => Math.max(prev - 1, 0));
+    }
 
     const handleNext = () => {
-        setCurrentStep(prev => Math.min(prev + 1, totalSteps));
-    };
+        setCurrentCardIndex(prev => Math.min(prev + 1, totalCards));
+    }
+
+    const handleCardFeedback = (isCorrect: boolean) => {
+        console.log(`Card ${currentCard?.id}: ${isCorrect ? 'Correto' : 'Incorreto'}`);
+
+        if (isLastCard) return;
+        handleNext();
+    }
 
     return {
-        currentStep,
-        totalSteps,
+        currentCard,
+        currentCardIndex,
+        totalCards,
         percentage,
-        handlePrevious: useCallback(handlePrevious, []),
-        handleNext: useCallback(handleNext, [])
-    }
+        isFirstCard,
+        isLastCard,
+        handlePrevious,
+        handleNext,
+        handleCardFeedback,
+    };
 };

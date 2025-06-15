@@ -11,7 +11,9 @@ const GamePage: React.FC = () => {
   const {
     percentage,
     handlePrevious,
-    handleNext 
+    handleNext,
+    currentCard,
+    handleCardFeedback
   } = useGame();
 
   return (
@@ -23,9 +25,10 @@ const GamePage: React.FC = () => {
           onNext={handleNext}
         />
         <Card
-          frontContent="que é polimorfismo na programação orientada a objetos?" 
-          backContent="É a capacidade de um objeto assumir muitas formas. Ou seja, diferentes classes podem implementar métodos com o mesmo nome, mas com comportamentos diferentes."
+          frontContent={currentCard.title}
+          backContent={currentCard.answer}
         />
+        <p className='text-black'>{percentage}</p>
       </div>
       <SectionTitle>
         Você acertou?
@@ -33,11 +36,11 @@ const GamePage: React.FC = () => {
       <div className='flex gap-4'>
         <FeedbackCard
           variant="like" 
-          onClick={handleNext}
+          onClick={() => handleCardFeedback(true)}
         />
         <FeedbackCard 
           variant="dislike" 
-          onClick={handleNext}
+          onClick={() => handleCardFeedback(false)}
         />
       </div>
     </div>
