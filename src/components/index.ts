@@ -8,3 +8,5 @@ export * from "./Stepper";
 export * from "./Toast";
 export * from "./BottomSheet";
 export * from "./SortableItem"
+export * from "./Actions";
+export * from "./ProgressBar";
