@@ -4,12 +4,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const ProgressBar: React.FC<IProgressBarProps> = ({
   percentage,
+  onLeftClick,
+  onRightClick,
 }) => {
   const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
 
   return (
     <div className="flex items-center text-black">
-      <ChevronLeft />
+      <ChevronLeft 
+        className="cursor-pointer hover:text-principal transition-colors"
+        onClick={onLeftClick}
+      />
       <div className={`w-full h-4 border-gray-200 border-2 rounded-full overflow-hidden`}>
         <motion.div
           className={`h-3 bg-principal rounded-full`}
@@ -21,7 +26,10 @@ export const ProgressBar: React.FC<IProgressBarProps> = ({
           }}
         />
       </div>
-      <ChevronRight />
+      <ChevronRight 
+        className="cursor-pointer hover:text-principal transition-colors"
+        onClick={onRightClick}
+      />
     </div>
   );
 };
