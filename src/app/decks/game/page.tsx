@@ -8,12 +8,11 @@ import { FeedbackCard } from '@/components/FeedbackCard';
 
 const GamePage: React.FC = () => {
   return (
-    <div className='flex flex-col items-center gap-10'>
-
-      <div className='w-68 xs:w-6/12 xl:w-3/12 h-52 flex flex-col gap-2'>
+    <div className='flex flex-col items-center gap-10 w-full mt-20'>
+      <div className='w-68 sm:w-[350px] xl:w-[400px] h-52 flex flex-col gap-2'>
         <ProgressBar percentage={20} />
         <Card
-          frontContent="aaaa"
+          frontContent="aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa " 
           backContent="bbbb"
         />
       </div>
