@@ -3,6 +3,7 @@ import { Briefcase, NotebookText } from "lucide-react";
 import StatusBadge from "./components/StatusBadge";
 import { Actions } from "@/components/Actions";
 import { DeleteDialog } from "@/components";
+import { useRouter } from "next/navigation";
 
 export const DeckCard: React.FC<IDeckCardProps> = ({
   id,
@@ -11,6 +12,7 @@ export const DeckCard: React.FC<IDeckCardProps> = ({
   statusBadgeType
 }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const router = useRouter();
 
   function handleOnClickDelete(e: React.MouseEvent<HTMLButtonElement>) {
     e.stopPropagation(); 
@@ -19,6 +21,7 @@ export const DeckCard: React.FC<IDeckCardProps> = ({
 
   const handleCardClick = () => {
     console.log("Card clicado:", id);
+    router.push(`decks/game`);
   };
 
   return (
