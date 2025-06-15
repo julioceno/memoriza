@@ -8,8 +8,7 @@ export function useCreateFlashCardModal({
   initialAnswer = "",
   activeId,
   onPrimaryAction,
-  onClose,
-  cardsIsEmpty
+  onClose
 }: ICreateFlashCardModal) {
   const isMobile = useIsMobile();
   const [question, setQuestion] = useState<string>("");
@@ -41,6 +40,8 @@ export function useCreateFlashCardModal({
       setQuestion(initialQuestion);
       setAnswer(initialAnswer);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   return {

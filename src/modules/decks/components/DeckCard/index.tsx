@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Briefcase, NotebookText } from "lucide-react";
 import StatusBadge from "./components/StatusBadge";
 import { Actions } from "@/components/Actions";
@@ -17,7 +17,7 @@ export const DeckCard: React.FC<IDeckCardProps> = ({
     setIsDialogOpen(true);
   }
 
-  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleCardClick = () => {
     console.log("Card clicado:", id);
   };
 
