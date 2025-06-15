@@ -1,0 +1,4 @@
+
+interface IProgressBarProps {
+  percentage: number;
+}
