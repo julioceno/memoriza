@@ -4,7 +4,7 @@ import { Content } from "./components";
 import { useCreateFlashCardModal } from "./hooks";
 
 export function CreateFlashCardModal(params: ICreateFlashCardModal) {
-  const { isOpen, onClose } = params;
+  const { isOpen, onClose, cardsIsEmpty } = params;
   const {
     isMobile,
     question,
@@ -24,7 +24,7 @@ export function CreateFlashCardModal(params: ICreateFlashCardModal) {
         actionButtonText={primaryButtonTitle}
         onPrimaryAction={handleOnClickPrimaryButton}
         isPrimaryButtonDisabled={isPrimaryButtonDisabled}
-        isDisableClose={true}
+        isDisableClose={cardsIsEmpty}
       >
         <Content
           question={question}
@@ -43,6 +43,7 @@ export function CreateFlashCardModal(params: ICreateFlashCardModal) {
       onPrimaryAction={handleOnClickPrimaryButton}
       primaryButtonLabel={primaryButtonTitle}
       isPrimaryButtonDisabled={isPrimaryButtonDisabled}
+      isDisableClose={cardsIsEmpty}
     >
       <Content
         question={question}

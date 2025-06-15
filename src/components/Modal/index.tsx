@@ -12,6 +12,7 @@ export const Modal = ({
   closeButtonLabel = "Fechar",
   primaryButtonLabel = "Próximo", 
   isPrimaryButtonDisabled = false,
+  isDisableClose = false
 }: IModalProps) => {
   const { handleBackdropClick } = useModal({ onClose })
 
@@ -42,6 +43,7 @@ export const Modal = ({
                 size="medium" 
                 full
                 onClick={onClose}
+                disabled={isDisableClose}
               >
                 {closeButtonLabel}
               </Button>

@@ -8,7 +8,8 @@ export function useCreateFlashCardModal({
   initialAnswer = "",
   activeId,
   onPrimaryAction,
-  onClose
+  onClose,
+  cardsIsEmpty
 }: ICreateFlashCardModal) {
   const isMobile = useIsMobile();
   const [question, setQuestion] = useState<string>("");

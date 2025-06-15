@@ -32,7 +32,7 @@ export function useCardStep() {
     const [initialQuestion, setInitialQuestion] = useState<string>("");
     const [initialAnswer, setInitialAnswer] = useState<string>("");
 
-    const disablePrimaryButton = useMemo(() => {
+    const cardsIsEmpty = useMemo(() => {
         return cards.length === 0;
     }, [cards.length]);
 
@@ -84,7 +84,7 @@ export function useCardStep() {
         sensors,
         sortableStrategy,
         cardsIds,
-        disablePrimaryButton,
+        cardsIsEmpty,
 
         isModalOpen,
         handleModalOpen,
