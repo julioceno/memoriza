@@ -13,8 +13,10 @@ const GamePage: React.FC = () => {
     handlePrevious,
     handleNext,
     currentCard,
-    handleCardFeedback
+    handleCardFeedback,
+    cardRef
   } = useGame();
+  
 
   return (
     <div className='flex flex-col items-center gap-10 w-full mt-20'>
@@ -27,6 +29,7 @@ const GamePage: React.FC = () => {
         <Card
           frontContent={currentCard.title}
           backContent={currentCard.answer}
+          ref={cardRef}
         />
       </div>
       <SectionTitle>

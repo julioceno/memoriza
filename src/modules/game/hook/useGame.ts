@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react';
+import { ICardRef } from '@/components/Card/types';
+import { useState, useMemo, useRef } from 'react';
 
 // TODO: remover esse cara daqui
 interface IFlashCard {
@@ -21,6 +22,7 @@ export const useGame = () => {
         { id: '10', title: 'O que é agregação?', answer: 'É uma relação onde uma classe contém referências a objetos de outras classes, mas não os possui exclusivamente.' }
     ];
 
+    const cardRef = useRef<ICardRef>(null);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const totalCards = flashcards.length;
 
@@ -42,10 +44,12 @@ export const useGame = () => {
     }, [currentCardIndex, totalCards]);
 
     const handlePrevious = () => {
+        cardRef.current?.resetFlip();
         setCurrentCardIndex(prev => Math.max(prev - 1, 0));
     }
 
     const handleNext = () => {
+        cardRef.current?.resetFlip();
         setCurrentCardIndex(prev => Math.min(prev + 1, totalCards));
     }
 
@@ -66,5 +70,6 @@ export const useGame = () => {
         handlePrevious,
         handleNext,
         handleCardFeedback,
+        cardRef
     };
 };

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { motion } from "framer-motion";
-import { ICardProps } from "./types";
+import { ICardProps, ICardRef } from "./types";
 
-export const Card: React.FC<ICardProps> = ({ frontContent, backContent }) => {
+export const Card = forwardRef<ICardRef, ICardProps>(({ frontContent, backContent }, ref) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleToggleFlip = () => setIsFlipped(!isFlipped);
+
+  const resetFlip = () => setIsFlipped(false);
+
+  useImperativeHandle(ref, () => ({
+    resetFlip,
+  }), []);
 
   return (
     <div
@@ -45,4 +51,4 @@ export const Card: React.FC<ICardProps> = ({ frontContent, backContent }) => {
       </motion.div>
     </div>
   );
-};
+});

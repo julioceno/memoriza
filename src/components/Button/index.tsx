@@ -2,6 +2,7 @@ import React from 'react';
 import { IButtonProps } from './types';
 import { icons, LucideIcon } from 'lucide-react';
 
+// TODO: criar um hook para o componente Button
 export const Button: React.FC<IButtonProps> = ({
   onClick,
   shape = 'rounded',
