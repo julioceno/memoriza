@@ -11,25 +11,28 @@ export const ProgressBar: React.FC<IProgressBarProps> = ({
   const isLeftDisabled = clampedPercentage === 0;
   const isRightDisabled = clampedPercentage === 100;
 
-
   function handlePrevious() {
     if (isLeftDisabled) return;
     onPrevious();
   }
+  
   function handleNext() {
     if (isRightDisabled) return;
     onNext();
   }
 
+  function getButtonStyles(disable: boolean) {
+    if (disable) {
+      return 'text-gray-400 cursor-not-allowed'
+    }
+
+    return 'hover:text-principal';
+  }
 
   return (
     <div className="flex items-center text-black">
       <ChevronLeft 
-        className={`cursor-pointer transition-colors ${
-          isLeftDisabled 
-            ? 'text-gray-400 cursor-not-allowed' 
-            : 'hover:text-principal'
-        }`}
+        className={`cursor-pointer transition-colors ${getButtonStyles(isLeftDisabled)}`}
         onClick={handlePrevious}
       />
       <div className={`w-full h-4 border-gray-300 border-2 rounded-full overflow-hidden`}>
@@ -39,16 +42,12 @@ export const ProgressBar: React.FC<IProgressBarProps> = ({
           animate={{ width: `${clampedPercentage}%` }}
           transition={{
             duration: .4,
-            ease: "backOut",
+            ease: clampedPercentage === 0 ? "backIn" : "backOut",
           }}
         />
       </div>
       <ChevronRight 
-        className={`cursor-pointer transition-colors ${
-          isRightDisabled 
-            ? 'text-gray-400 cursor-not-allowed' 
-            : 'hover:text-principal'
-        }`}
+        className={`cursor-pointer transition-colors ${getButtonStyles(isRightDisabled)}`}
         onClick={handleNext}
       />
     </div>
