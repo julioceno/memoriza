@@ -24,6 +24,7 @@ export const useGame = () => {
 
     const cardRef = useRef<ICardRef>(null);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
+    const [answeredCards, setAnsweredCards] = useState<Set<string>>(new Set());
     const totalCards = flashcards.length;
 
     const currentCard = useMemo(() => {
@@ -43,6 +44,14 @@ export const useGame = () => {
         return currentCardIndex === totalCards - 1;
     }, [currentCardIndex, totalCards]);
 
+    const isCurrentCardAnswered = useMemo(() => {
+        return currentCard ? answeredCards.has(currentCard.id) : false;
+    }, [currentCard, answeredCards]);
+
+    const disableNavigateToNext = useMemo(() => {
+        return !isCurrentCardAnswered || isLastCard;
+    }, [isCurrentCardAnswered, isLastCard]);
+
     const handlePrevious = () => {
         cardRef.current?.resetFlip();
         setCurrentCardIndex(prev => Math.max(prev - 1, 0));
@@ -50,14 +59,15 @@ export const useGame = () => {
 
     const handleNext = () => {
         cardRef.current?.resetFlip();
-        setCurrentCardIndex(prev => Math.min(prev + 1, totalCards));
+        setCurrentCardIndex(prev => Math.min(prev + 1, totalCards - 1));
     }
 
     const handleCardFeedback = (isCorrect: boolean) => {
-        console.log(`Card ${currentCard?.id}: ${isCorrect ? 'Correto' : 'Incorreto'}`);
-
+        console.log({ isCorrect })
         if (isLastCard) return;
+        setAnsweredCards(prev => new Set([...prev, currentCard.id]));
         handleNext();
+
     }
 
     return {
@@ -67,6 +77,8 @@ export const useGame = () => {
         percentage,
         isFirstCard,
         isLastCard,
+        isCurrentCardAnswered,
+        disableNavigateToNext,
         handlePrevious,
         handleNext,
         handleCardFeedback,

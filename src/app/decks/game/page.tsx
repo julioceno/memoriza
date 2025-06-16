@@ -14,6 +14,8 @@ const GamePage: React.FC = () => {
     handleNext,
     currentCard,
     handleCardFeedback,
+    isCurrentCardAnswered,
+    disableNavigateToNext,
     cardRef
   } = useGame();
   
@@ -25,6 +27,7 @@ const GamePage: React.FC = () => {
           percentage={percentage} 
           onPrevious={handlePrevious}
           onNext={handleNext}
+          disableNext={disableNavigateToNext}
         />
         <Card
           frontContent={currentCard.title}
@@ -39,10 +42,12 @@ const GamePage: React.FC = () => {
         <FeedbackCard
           variant="like" 
           onClick={() => handleCardFeedback(true)}
+          disabled={isCurrentCardAnswered}
         />
         <FeedbackCard 
           variant="dislike" 
           onClick={() => handleCardFeedback(false)}
+          disabled={isCurrentCardAnswered}
         />
       </div>
     </div>
