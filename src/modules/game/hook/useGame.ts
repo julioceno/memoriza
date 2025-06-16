@@ -9,7 +9,7 @@ interface IFlashCard {
 }
 
 export const useGame = () => {
-    const flashcards: IFlashCard[] = [
+    const flashcards: IFlashCard[] = useMemo(() => [
         { id: '1', title: 'O que é polimorfismo na programação orientada a objetos?', answer: 'É a capacidade de um objeto assumir muitas formas. Ou seja, diferentes classes podem implementar métodos com o mesmo nome, mas com comportamentos diferentes.' },
         { id: '2', title: 'O que é encapsulamento?', answer: 'É o princípio de ocultar os detalhes internos de uma classe e expor apenas uma interface pública.' },
         { id: '3', title: 'O que é herança?', answer: 'É o mecanismo que permite que uma classe herde características de outra classe.' },
@@ -20,7 +20,7 @@ export const useGame = () => {
         { id: '8', title: 'O que é uma classe abstrata?', answer: 'É uma classe que não pode ser instanciada diretamente e geralmente contém métodos abstratos.' },
         { id: '9', title: 'O que é composição?', answer: 'É uma relação onde uma classe é composta por objetos de outras classes.' },
         { id: '10', title: 'O que é agregação?', answer: 'É uma relação onde uma classe contém referências a objetos de outras classes, mas não os possui exclusivamente.' }
-    ];
+    ], []);
 
     const cardRef = useRef<ICardRef>(null);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);

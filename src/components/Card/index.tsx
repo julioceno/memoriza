@@ -2,7 +2,7 @@ import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { motion } from "framer-motion";
 import { ICardProps, ICardRef } from "./types";
 
-export const Card = forwardRef<ICardRef, ICardProps>(({ frontContent, backContent }, ref) => {
+const Card = forwardRef<ICardRef, ICardProps>(function Card({ frontContent, backContent }, ref) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleToggleFlip = () => setIsFlipped(!isFlipped);
@@ -52,3 +52,5 @@ export const Card = forwardRef<ICardRef, ICardProps>(({ frontContent, backConten
     </div>
   );
 });
+
+export { Card };
