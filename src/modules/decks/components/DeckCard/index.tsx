@@ -20,7 +20,6 @@ export const DeckCard: React.FC<IDeckCardProps> = ({
   }
 
   const handleCardClick = () => {
-    console.log("Card clicado:", id);
     router.push(`decks/game`);
   };
 
