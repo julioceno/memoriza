@@ -2,14 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// TODO: criar um hook para o componente
 export const ProgressBar: React.FC<IProgressBarProps> = ({
   percentage,
   onNext,
-  onPrevious
+  onPrevious,
+  disableNext = false
 }) => {
   const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
   const isLeftDisabled = clampedPercentage === 0;
-  const isRightDisabled = clampedPercentage === 100;
+  const isRightDisabled = clampedPercentage === 100 || disableNext;
 
   function handlePrevious() {
     if (isLeftDisabled) return;
