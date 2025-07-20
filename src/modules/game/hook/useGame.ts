@@ -1,11 +1,15 @@
 import { ICardRef } from '@/components/Card/types';
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 
-// TODO: remover esse cara daqui
 interface IFlashCard {
     id: string;
     title: string;
     answer: string;
+}
+
+interface ICardFeedback {
+    id: string;
+    isCorrect: boolean;
 }
 
 export const useGame = () => {
@@ -24,7 +28,7 @@ export const useGame = () => {
 
     const cardRef = useRef<ICardRef>(null);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
-    const [answeredCards, setAnsweredCards] = useState<Set<string>>(new Set());
+    const [answeredCards, setAnsweredCards] = useState<ICardFeedback[]>([]);
     const totalCards = flashcards.length;
 
     const currentCard = useMemo(() => {
@@ -45,12 +49,16 @@ export const useGame = () => {
     }, [currentCardIndex, totalCards]);
 
     const isCurrentCardAnswered = useMemo(() => {
-        return currentCard ? answeredCards.has(currentCard.id) : false;
+        return currentCard ? answeredCards.some(feedback => feedback.id === currentCard.id) : false;
     }, [currentCard, answeredCards]);
 
     const disableNavigateToNext = useMemo(() => {
         return !isCurrentCardAnswered || isLastCard;
     }, [isCurrentCardAnswered, isLastCard]);
+
+      const areAllAnswered = useMemo(() => {
+        return answeredCards.length === totalCards;
+    }, [answeredCards, totalCards]);
 
     const handlePrevious = () => {
         cardRef.current?.resetFlip();
@@ -63,12 +71,16 @@ export const useGame = () => {
     }
 
     const handleCardFeedback = (isCorrect: boolean) => {
-        console.log({ isCorrect })
-        if (isLastCard) return;
-        setAnsweredCards(prev => new Set([...prev, currentCard.id]));
+        if (areAllAnswered) return;
+        setAnsweredCards(prev => ([...prev, { id: currentCard.id, isCorrect }]));
         handleNext();
-
     }
+
+      useEffect(() => {
+        if (answeredCards.length === totalCards) {
+            console.log("All cards answered!");
+        }
+    }, [answeredCards, totalCards]);
 
     return {
         currentCard,
