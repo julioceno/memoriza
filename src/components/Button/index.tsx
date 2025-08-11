@@ -1,6 +1,5 @@
 import React from 'react';
 import { IButtonProps } from './types';
-import { icons, LucideIcon } from 'lucide-react';
 import { useButton } from './hooks';
 
 export const Button: React.FC<IButtonProps> = (props) => {

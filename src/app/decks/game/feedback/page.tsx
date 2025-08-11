@@ -5,9 +5,8 @@ import PerformanceChart from '@/components/PerformanceChart';
 import React from 'react';
 
 const FeedbackPage: React.FC = () => {
-    // Example data - replace with actual performance data
     const correctAnswers = 10;
-    const totalQuestions = 20;
+    const totalQuestions = 15;
 
     return (
         <div className='flex flex-col items-center gap-10 w-full mt-20'>
@@ -16,8 +15,8 @@ const FeedbackPage: React.FC = () => {
             </SectionTitle>
             
             <PerformanceChart 
-                correct={10} 
-                total={15} 
+                correct={correctAnswers} 
+                total={totalQuestions} 
             />
             
             <div className='flex flex-col sm:flex-row w-full sm:w-md gap-4'> 
