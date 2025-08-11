@@ -2,12 +2,11 @@ import { ThumbsDown, ThumbsUp } from "lucide-react";
 import React from "react";
 
 
-export const FeedbackCard: React.FC<IFeedbackCardProps> = ({
+export const AnswerFeedbackButton: React.FC<IAnswerFeedbackButtonProps> = ({
   variant,
   onClick,
   disabled,
 }) => {
-  const isLike = variant === "like";
   
   const getVariantClasses = () => {
     if (disabled) {
@@ -21,6 +20,7 @@ export const FeedbackCard: React.FC<IFeedbackCardProps> = ({
     return "bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700";
   }
 
+  const isLike = variant === "like";
   const Icon = isLike ? ThumbsUp : ThumbsDown;
 
   return (
