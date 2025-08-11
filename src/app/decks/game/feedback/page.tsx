@@ -1,6 +1,7 @@
 'use client';
 
 import { Button, SectionTitle } from '@/components';
+import { FeedbackCard } from '@/components/FeedbackCard';
 import PerformanceChart from '@/components/PerformanceChart';
 import React from 'react';
 
@@ -13,14 +14,18 @@ const FeedbackPage: React.FC = () => {
             <SectionTitle>
                 Parabéns! Você terminou mais uma revisão
             </SectionTitle>
-            
-            <PerformanceChart 
-                correct={correctAnswers} 
-                total={totalQuestions} 
-            />
-            
-            <div className='flex flex-col sm:flex-row w-full sm:w-md gap-4'> 
-                <Button type="outlined" full> 
+            <div className="flex justify-center items-center gap-6 h-48">
+                <FeedbackCard
+                    content="Você está bem! Acertou 80% das questões"
+                    variant="like"
+                />
+                <PerformanceChart
+                    correct={correctAnswers}
+                    total={totalQuestions}
+                />
+            </div>
+            <div className='flex flex-col sm:flex-row w-full sm:w-md gap-4'>
+                <Button type="outlined" full>
                     Ir para a home
                 </Button>
                 <Button full>
