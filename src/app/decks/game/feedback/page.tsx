@@ -14,7 +14,7 @@ const FeedbackPage: React.FC = () => {
             <SectionTitle>
                 Parabéns! Você terminou mais uma revisão
             </SectionTitle>
-            <div className="flex justify-center items-center gap-6 h-48">
+            <div className="flex justify-center items-center gap-2 sm:gap-6 h-48">
                 <FeedbackCard
                     content="Você está bem! Acertou 80% das questões"
                     variant="like"
@@ -24,7 +24,7 @@ const FeedbackPage: React.FC = () => {
                     total={totalQuestions}
                 />
             </div>
-            <div className='flex flex-col sm:flex-row w-full sm:w-md gap-4'>
+            <div className='flex w-full sm:w-md gap-4'>
                 <Button type="outlined" full>
                     Ir para a home
                 </Button>

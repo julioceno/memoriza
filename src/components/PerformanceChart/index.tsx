@@ -69,7 +69,7 @@ const PerformanceChart: React.FC<IPerformanceChartProps> = ({ correct, total }) 
     };
 
     return (
-        <div className="w-44">
+        <div className="w-36 sm:w-44">
             <Doughnut
                 data={data}
                 options={options}

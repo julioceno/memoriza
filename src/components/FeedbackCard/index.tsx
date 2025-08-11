@@ -27,10 +27,13 @@ export const FeedbackCard: React.FC<IFeedbackCardProps> = ({
 
     return (
         <div className={`flex flex-col items-center rounded-xl w-32 gap-2 p-2 ${getVariantClasses().container}`}>
-            <Icon size={48} className={getVariantClasses().icon} strokeWidth={3} />
+            <Icon 
+                className={`w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 ${getVariantClasses().icon}`} 
+                strokeWidth={3} 
+            />
 
             <div className="text-center">
-                <p className={`font-semibold text-sm ${getVariantClasses().text}`}>
+                <p className={`font-semibold text-xs sm:text-sm ${getVariantClasses().text}`}>
                     {content}
                 </p>
             </div>
