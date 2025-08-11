@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-gray-100 ">
-      <div className="min-h-screen py-10 pt-4 px-4 sm:px-12 max-w-[1800px] mx-auto">
+      <div className="min-h-dvh py-10 pt-4 px-4 sm:px-12 max-w-[1800px] mx-auto">
         <Header />
         {children}
       </div>
